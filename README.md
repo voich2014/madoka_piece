@@ -5,8 +5,8 @@
 
 # 🌐 公開ページ入口
 
-[まどかのP/ECE](https://voich2014.github.io/madoka_piece/piece/piece.htm)
-[まどかのP/ECEではじめる電子工作](https://voich2014.github.io/madoka_piece/piece_ele/piece_ele.htm)
+- [まどかのP/ECE](https://voich2014.github.io/madoka_piece/piece/piece.htm)
+- [まどかのP/ECEではじめる電子工作](https://voich2014.github.io/madoka_piece/piece_ele/piece_ele.htm)
 
 プロパイダのHPサービスが終了してしまって、やむを得ず閉鎖してしまっていた
 P/ECE関連のページを一応復活させてみました。
