@@ -1,0 +1,185 @@
+<P/ECE HandBook Vol.2付属のまかべひろしさん作
+ P/ECE HandBook 3大ゲームのMMC対応改造のやり方>
+
+3大ゲームはどれもゲームの基本的なフレームワーク
+は同じで、改造するところはMMC上に保存したfpkファ
+イルを読み込む部分と起動・終了時にmmcInit/mmcExit
+を加えるという共通化されたものになります。
+
+ですので、各ゲームで微妙に改造する個所が変わる事も
+ありますが、違いはすぐわかると思いますので、その辺
+は割愛して説明します。
+
+
+※この改造はMMC対応カーネルが入っているP/ECE専用と
+　なります。ご注意ください。
+　また、MMC対応カーネル専用のMMC制御APIを使用します
+　ので、カーネルのソースやメニューサンプルソースから
+　mmc_api.lib / mmc_api.h の入ったmmc_libフォルダを
+　各ゲームのsrcフォルダ内に作成しておいてください。
+
+
+＜改造方法＞
+
+１．makefileの変更
+
+　各ゲームのsrcフォルダにはmakefileが含まれています。
+　そのmakefileを適当なエディタで開いて、以下の部分を
+　追加・変更します。
+
+　○ makefileの改造個所 ○
+ 
+    ・LIBS変数(?)を追加
+
+        # 構成ファイル・生成ファイルのマクロ
+
+        PRGNAME = padv
+        FILENAME = padv
+        CAPTION = てのひらノベル
+        OBJS = 13dpp.o ad_main.o\
+            hb2_open.o\
+            ad_game.o\
+            ad_rep.o\
+            ad_res.o\
+            ad_end.o\
+            ad_menu.o\
+            inflate.o unpack.o\
+            common.o\
+            usbcapt.o verchk.o mymalloc.o\
+            instdef.o
+            #music\wave\i_BD909.o music\wave\i_CYMBD.o music\wave\i_HANDCLAP.o music\wave\i_HC909.o music\wave\i_HO909.o music\wave\i_SD909.o music\wave\i_SDGATE.o music\wave\i_TOMH1.o music\wave\i_TOML1.o music\wave\i_TOMM1.o music\wavetable.o
+
+        #2004/05/20 Add by Madoka
+        LIBS = mmc_lib\mmc_api.lib
+
+        ↑こんな感じで追加
+
+
+　　・リンク時にLIBSもリンクするように変更
+
+        $(PRGNAME).srf : $(OBJS)
+            $(LD) $(LDFLAGS) -e$(PRGNAME).srf $(OBJS) $(LIBS) #2004/05/20 Add by Madoka $(LIBS)を追加
+
+
+  ○ ??_main.cの改造個所 ○
+    ※??には以下の文字が入ります。
+　　　ad : 緋色の霧
+　　　mj : じゃんぴーす
+　　　rt : れとるとまじっく
+
+　　・pceAppInit関数の前に以下の定義を追加します
+
+　　　　//2004/05/20 Add by Madoka
+        #define MMC_MAXFILESIZE (256)	//MMC上から読み込むファイルの最大サイズ(KB)
+
+        void pceAppInit( void ) {
+	        PCETIME strTime;
+             ～以下略～
+
+
+    ・pceAppInit関数に以下のAPIコールを追加
+　　　
+        void pceAppInit( void ) {
+            PCETIME strTime;
+
+	        //2004/05/20 Add by Madoka
+	        // MMC Init.
+	        mmcInit(MMC_MAXFILESIZE * 1024);
+
+	        // pceCaps Init.
+	        usbCaptureInit();
+	        // Display Init.
+	        pceLCDDispStop();
+	        pceLCDSetBuffer( vbuff );
+
+             ～以下略～
+
+
+    ・pceAppExit関数に以下のAPIコールを追加
+
+        void pceAppExit( void ) {
+            FadeRefreshMaster();
+	        StopMusic();
+	        // FirstDrawObject Init.
+            //	unhook_LCDDrawObject();
+            // pceCaps Release.
+	        usbCaptureRelease();
+
+            //2004/05/20 Add by Madoka
+	        mmcExit();
+
+       }
+
+  ○ include.hの改造個所 ○
+
+　　一番最後にでも以下の行を追加します。
+
+　　//2004/05/20 Add by Madoka
+    #include "mmc_lib\mmc_api.h"
+
+    この他common.cにも追加しないといけない場合もある
+　　ので、そこらへんは臨機応変にエラーを見て対応して
+　　ください。
+
+  ○ その他のファイルでの改造個所 ○
+
+    この他の個所の改造は、それぞれのゲームで以下のAPI
+　　が使われている個所で、pceFileOpen→mmcFileOpenと
+　　いうようにAPI名の最初のpceをmmcに変更するとそれら
+　　のAPIがMMC対応になります。(引数は互換性があるので、
+　　API名の変更だけで対応できます。)
+
+　　変更するAPIの対応は以下の通りです。
+　　
+　　pceFileFindOpen  → mmcFileFindOpen
+    pceFileFindNext  → mmcFileFindNext
+    pceFileFindClose → mmcFileFindClose
+    pceFileOpen      → mmcFileOpen
+    pceFileReadSct   → mmcFileReadSct
+    pceFileClose     → mmcFileClose
+
+    これ以外のpceFile系APIには対応していませんので、
+　　変換しないで下さい。
+
+　　また、変更する個所ではソースの流れを読んで、fpkを
+　　MMC上から読むようになっているところのみを変更して
+　　ください。
+　　セーブデータ等はP/ECE上のフラッシュメモリに書き込
+　　むので、セーブデータ等を読み込むpceFileReadSctを
+　　MMC対応版に書き換えてしまうと正常に動作しなくなり
+　　ます。ご注意ください。
+
+　　各ゲームでの変更が必要なファイルは以下の通りです。
+
+　　・じゃんぴーす
+      common.c
+      
+　　・れとるとまじっく
+      common.c
+      
+　　・緋色の霧
+　　　ad_menu.c
+      common.c
+      
+    これらのファイルの中からpceFileを検索して該当部分
+　　を変更してください。
+
+
+
+以上の改造をしたpexと各ゲームのfpkファイルをMMCに保存
+すれば、MMC対応カーネルのサンプルであるMMCメニューで
+各ゲームを起動することができます。
+
+なんか、これらの3大ゲームがいちいちP/ECEに転送し直さ
+なくても遊べるって嬉しいですよね(^^
+
+
+何かありましたら、お問い合わせはまどか宛までお願いします。
+決してこれらのゲームの作者であるまかべひろしさんや
+(株)アクアプラスには問い合わせをしないようにして下さい。
+
+それでは～
+
+まどか
+http://www2.plala.or.jp/madoka/
+madoka@olive.plala.or.jp

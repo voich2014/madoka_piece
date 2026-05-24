@@ -1,0 +1,697 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<META name="GENERATOR" content="IBM HomePage Builder 2001 V5.0.0 for Windows">
+<TITLE>Ｐ／ＥＣＥのＭＭＣでＭＰ３プレイヤー＆ＭＭＣ対応カーネル　サポートページ</TITLE>
+<script language="JavaScript" src="../../mycount.js"></script>
+</HEAD>
+<BODY>
+<P><FONT size="+3">P/ECEのMMCでMP3プレイヤー＆<BR>
+MMC対応カーネル<BR>
+</FONT><FONT size="+2">サポートページ</FONT></P>
+<HR>
+<B>&lt;MMCライブラリ(MMC対応カーネル)の更新履歴&gt;</B><BR><BR>
+<TABLE>
+  <TBODY>
+    <TR>
+      <TD width="86" valign="top">2004/04/26<BR>
+      </TD>
+      <TD width="70" valign="top">Ver.1.21</TD>
+      <TD width="512">公開<BR><BR>
+      </TD>
+    </TR>
+    <TR>
+      <TD width="86" valign="top">2004/05/23<BR>
+      </TD>
+      <TD width="70" valign="top">Ver.1.21b</TD>
+      <TD width="512">データ読み込み関数での不具合を修正し、IODATAの128MBに対応。<BR><BR>
+      </TD>
+    </TR>
+    <TR>
+      <TD valign="top">2004/08/29<BR>
+      </TD>
+      <TD width="70" valign="top">Ver.1.22</TD>
+      <TD width="512">mmcFileReadSctで<BR>
+      <BR>
+      mmcFileReadSct(&amp;pfa, NULL, sct, 0);<BR>
+      <BR>
+      とした場合に、内部の代替バッファに何も読み込まれていなかった不具合を修正。<BR>
+      詳しくはmmcif.cを参照して下さい。<BR>
+      </TD>
+    </TR>
+    <TR>
+      <TD valign="top">2004/08/30<BR>
+      </TD>
+      <TD width="70" valign="top">Ver.1.23</TD>
+      <TD width="512">SDカードと初期化に時間がかかるMMCに対応しました。<BR>
+      情報提供をして下さった<A href="http://piece.no-ip.org/" target="_blank">nsawaさん</A>ありがとうございます。m(-_-)m<BR>
+      </TD>
+    </TR>
+    <TR>
+      <TD valign="top">2004/10/20</TD>
+      <TD width="70" valign="top"></TD>
+      <TD width="512">P/ECEの電源電圧で正常に動作しなかったカードを、カードへの電源電圧を調整することで対応しました。参照：<A href="#KAHEN">可変電源版接続回路基板</A><BR>
+      </TD>
+    </TR>
+    <TR>
+      <TD valign="top">2004/10/25<BR>
+      </TD>
+      <TD width="70" valign="top">Ver.1.24</TD>
+      <TD width="512">10x10全角フォントの後半が崩れてしまっていた不具合などを修正。<BR>
+      この不具合に関して、情報提供して下さった<A href="http://piece.no-ip.org/" target="_blank">nsawaさん</A>ありがとうございます。m(-_-)m<BR>
+      不具合対応の詳しい解説は<A href="http://piece.no-ip.org/mmc123-20041026.html" target="_blank">こちら</A><BR>
+      </TD>
+    </TR>
+    <TR>
+      <TD valign="top">2004/11/02<BR>
+      </TD>
+      <TD width="70" valign="top">Ver.1.25</TD>
+      <TD width="512"><A href="http://piece.no-ip.org/" target="_blank">nsawaさん</A>の御要望により、mmcReadSector APIを追加しました。<BR>
+      詳しくは、mmc_api.h等のコメントをご参照ください。<BR>
+      </TD>
+    </TR>
+    <TR>
+      <TD valign="top">2004/11/06<BR>
+      </TD>
+      <TD width="70" valign="top">Ver.1.26</TD>
+      <TD width="512"><A href="http://piece.no-ip.org/" target="_blank">nsawaさん</A>からの情報提供により、スーパーフロッピー形式のMMC/SDカードに対応しました。<BR>
+      今回の修正の詳しい解説は<A href="http://piece.no-ip.org/mmc125-20041104.html" target="_blank">こちら</A><BR>
+      </TD>
+    </TR>
+    <TR>
+      <TD valign="top">2005/04/02</TD>
+      <TD valign="top">Ver.1.27</TD>
+      <TD width="512"><A href="http://www.mulsys.net/" target="_blank">まるしすさん</A>のかねてからの<A href="http://www.mulsys.net/blog/archives/2005/02/p2004.html" target="_blank">ご要望</A>であった、カーネル側でのpceFile系APIフック（オープン・リード・検索のみ）によるMMC利用機能の追加と、512MB以上1GB以内のMMC/SDカードに対応しました。<BR><BR>
+      カーネル側でのMMC利用機能は、システムメニューからON/OFFの設定が可能で、MMC利用ONの場合、アプリ起動直前にカーネル側でMMCを初期化し、かつ、pceFile系APIをフックし、自動でMMC側も読みにいけるというものです。<BR>
+      <BR>
+      MMC利用機能を使えば、MMC非対応のアプリが無改造でMMC側のデータを利用できるようになります。<BR>
+      <BR>
+      また、従来のMMCを利用するアプリに対しては、pceAppNotifyにおいて、カーネル側でのMMC初期化の直前に、通知タイプAPPNF_INITMMCにて問い合わせを行うので、カーネル側のMMC初期化が不要な場合、APPNR_SUSPEND
+      or APPNR_REJECTを返してください。<BR><BR>
+      pceFile系APIのフック部分は<A href="http://piece.no-ip.org/" target="_blank">nsawaさん</A>のMMC/SDカードリーダーライターのソースを利用させていただきました。ありがとうございます。<BR>
+      </TD>
+    </TR>
+    <TR>
+      <TD valign="top">2005/04/03</TD>
+      <TD valign="top">Ver.1.27b</TD>
+      <TD width="512">MMCライブラリのソースを他のプロジェクトでも流用できるようにちょっと整理しました。<BR>
+      </TD>
+    </TR>
+    <TR>
+      <TD valign="top">2005/04/05</TD>
+      <TD valign="top">Ver.1.28</TD>
+      <TD width="512"><A href="http://piece.no-ip.org/" target="_blank">nsawaさん</A>改造のMMCライブラリと統合したところで、mmcFileReadSctの、<BR>
+      <BR>
+      mmcFileReadSct(&amp;pfa, NULL, sct, 0);<BR><BR>
+      としたときの不具合が復活してしまっていましたので、それを修正。<BR>
+      また、mmcFileReadMMCSctでもlenの切り詰め処理を施しました。<BR>
+      </TD>
+    </TR>
+    <TR>
+      <TD valign="top">2005/05/01</TD>
+      <TD valign="top">Ver.1.29</TD>
+      <TD valign="top" width="512">システムメニュー終了時にmmcExitを呼んでしまっていた不具合を修正。<BR>
+      MMC機能を利用しているアプリの場合、これによりフックが解除されてしまい、システムメニュー表示後に正しくMMCからファイルを読めなくなってしまっていました。<BR><BR>
+      また、ファイル検索時に扱える最大サイズぴったりのファイルがはじかれる条件式だったのを修正しました。(情報提供:<A href="http://piece.no-ip.org/" target="_blank">nsawaさん</A>)</TD>
+    </TR>
+    <TR>
+      <TD valign="top">2005/05/04</TD>
+      <TD valign="top">Ver.1.29b</TD>
+      <TD valign="top" width="512">MMC版MP3プレイヤーの5倍速MMCライブラリ対応にて修正したライブラリの変更点をカーネルのライブラリにも反映。<BR>
+      ついでにPMFプレイヤーでのMMCライブラリも同じモノに差し替え。<BR>
+      <BR>
+      これにより、2005/05/04付けで、ようやくカーネルとMP3プレイヤーとPMFプレイヤーでのMMCライブラリのソースの統合ができました（＾＾<BR>
+      ただし、ヘッダーファイルに定義されている扱える最大ファイルサイズの定義はアプリによって変わってくるので、そこだけアプリ固有のものになります。<BR>
+      <BR>
+      ほんとは、MMCライブラリを別にして、差し替えとかが簡単に出来た方が良いのかもしれないのですが、まだしばらくはこのままの状態にしておくつもりです。<BR>
+      <BR>
+      </TD>
+    </TR>
+    <TR>
+      <TD valign="top">2005/05/07</TD>
+      <TD valign="top">Ver.1.29c</TD>
+      <TD valign="top" width="512">MMCライブラリを更新しました（MMC対応カーネル・MMC版MP3プレイヤーともに）。<BR>
+      扱う最大ファイルサイズがカード容量を超えている場合、最大ファイルサイズをカード容量のサイズに切り詰めるようにしました。<BR>
+      これにより、64MBのカードで50MB以上のファイルが扱えなかった不具合が修正されましたが、MMC対応カーネルとMMC版MP3プレイヤーでは関係ありません（＾＾；<BR>
+      <BR>
+      今回はMMCライブラリの更新のみで特に機能的にも変化が無いので、カーネルのヴァージョンもVer.1.29cとしておきます。<BR>
+      <BR>
+      </TD>
+    </TR>
+    <TR>
+      <TD valign="top">2005/07/09</TD>
+      <TD valign="top">Ver.1.30</TD>
+      <TD valign="top" width="512">MMCライブラリのpceFileReadSctとpceFileReadMMCSctでファイルサイズを超えてアクセスした場合のチェックが上手く動いていなかった不具合を修正しました。<BR>
+      <BR>
+      </TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P><BR>
+</P>
+<HR>
+<A name="CARD_LIST"><B>&lt;動作確認済みカード一覧&gt;</B></A> <BR>
+更新日 2005/07/05<BR><TABLE cellspacing="1" bgcolor="#009999">
+  <TBODY>
+    <TR>
+      <TD bgcolor="#00CCCC" width="124">メーカー</TD>
+      <TD bgcolor="#00CCCC" width="20">種類</TD>
+      <TD width="63" bgcolor="#00CCCC">容量</TD>
+      <TD bgcolor="#00CCCC" width="116">カード情報画像</TD>
+      <TD bgcolor="#00CCCC" width="228">備考</TD>
+    </TR>
+    <TR>
+      <TD bgcolor="#FFFFFF" rowspan="4" width="124">SanDisk</TD>
+      <TD bgcolor="#FFFFFF" width="20">MMC</TD>
+      <TD bgcolor="#FFFFFF">16MB</TD>
+      <TD bgcolor="#FFFFFF" width="116"></TD>
+      <TD bgcolor="#FFFFFF" width="228"></TD>
+    </TR>
+    <TR>
+      <TD bgcolor="#FFFFFF" width="20">MMC</TD>
+      <TD bgcolor="#FFFFFF">32MB</TD>
+      <TD bgcolor="#FFFFFF"><IMG src="sandisk_32mb_mmc.gif" width="128" height="88" border="0"></TD>
+      <TD bgcolor="#FFFFFF"></TD>
+    </TR>
+    <TR>
+      <TD bgcolor="#FFFFFF" width="20">MMC</TD>
+      <TD width="63" bgcolor="#FFFFFF">64MB</TD>
+      <TD bgcolor="#FFFFFF" width="116"><IMG src="sandisk_64mb_mmc.gif" width="128" height="88" border="0"></TD>
+      <TD bgcolor="#FFFFFF" width="228"></TD>
+    </TR>
+    <TR>
+      <TD bgcolor="#FFFFFF" width="20">miniSD</TD>
+      <TD width="63" bgcolor="#FFFFFF">32MB</TD>
+      <TD bgcolor="#FFFFFF" width="116"><IMG src="sandisk_32mb_minisd.gif" width="128" height="88" border="0"></TD>
+      <TD bgcolor="#FFFFFF" width="228"></TD>
+    </TR>
+    <TR>
+      <TD bgcolor="#F0F0F0" rowspan="2" width="124">IODATA</TD>
+      <TD bgcolor="#F0F0F0" rowspan="2" width="20">MMC</TD>
+      <TD bgcolor="#F0F0F0">16MB</TD>
+      <TD bgcolor="#F0F0F0"><IMG src="iodata_16mb_mmc.gif" width="128" height="88" border="0"></TD>
+      <TD bgcolor="#F0F0F0"><B><FONT color="#FF3300">注意！！<BR>
+      <IMG src="iodata_16mb.jpg" width="68" height="84" border="0"><BR>
+      可変電源版接続回路基板</FONT></B>が必要です</TD>
+    </TR>
+    <TR>
+      <TD width="63" bgcolor="#F0F0F0">128MB</TD>
+      <TD bgcolor="#F0F0F0" width="116"><IMG src="iodata_128mb_mmc.gif" width="128" height="88" border="0"></TD>
+      <TD bgcolor="#F0F0F0" width="228"></TD>
+    </TR>
+    <TR>
+      <TD bgcolor="#FFFFFF" width="124">BUFFALO</TD>
+      <TD bgcolor="#FFFFFF" width="20">SD</TD>
+      <TD bgcolor="#FFFFFF">32MB</TD>
+      <TD bgcolor="#FFFFFF" width="116"><IMG src="buffalo_32mb_sd.gif" width="128" height="88" border="0"></TD>
+      <TD bgcolor="#FFFFFF" width="228"></TD>
+    </TR>
+    <TR>
+      <TD bgcolor="#F0F0F0" rowspan="3" width="124">ADTEC</TD>
+      <TD bgcolor="#F0F0F0" width="20">SD</TD>
+      <TD width="63" bgcolor="#F0F0F0">64MB</TD>
+      <TD bgcolor="#F0F0F0" width="116"><IMG src="adtec_64mb_sd.gif" width="128" height="88" border="0"></TD>
+      <TD bgcolor="#F0F0F0" width="228"></TD>
+    </TR>
+    <TR>
+      <TD bgcolor="#F0F0F0" width="20" rowspan="2">miniSD</TD>
+      <TD bgcolor="#F0F0F0">16MB</TD>
+      <TD bgcolor="#F0F0F0" width="116"><IMG src="adtec_16mb_minisd.gif" width="128" height="88" border="0"></TD>
+      <TD bgcolor="#F0F0F0" width="228"></TD>
+    </TR>
+    <TR>
+      <TD bgcolor="#F0F0F0">128MB</TD>
+      <TD bgcolor="#F0F0F0"><IMG src="adtec_128mb_minisd.gif" width="128" height="88" border="0"></TD>
+      <TD bgcolor="#F0F0F0"></TD>
+    </TR>
+    <TR>
+      <TD bgcolor="#FFFFFF" width="124">Panasonic</TD>
+      <TD bgcolor="#FFFFFF" width="20">SD</TD>
+      <TD bgcolor="#FFFFFF">8MB</TD>
+      <TD bgcolor="#FFFFFF" width="116"><IMG src="panasonic_8mb_sd.gif" width="128" height="88" border="0"></TD>
+      <TD bgcolor="#FFFFFF" width="228"></TD>
+    </TR>
+    <TR>
+      <TD bgcolor="#F0F0F0" rowspan="2" width="124">TOSHIBA</TD>
+      <TD bgcolor="#F0F0F0" width="20">SD</TD>
+      <TD bgcolor="#F0F0F0">32MB</TD>
+      <TD bgcolor="#F0F0F0" width="116"><IMG src="toshiba_32mb_sd.gif" width="128" height="88" border="0"></TD>
+      <TD bgcolor="#F0F0F0" width="228"></TD>
+    </TR>
+    <TR>
+      <TD bgcolor="#F0F0F0" width="20">miniSD</TD>
+      <TD bgcolor="#F0F0F0">16MB</TD>
+      <TD bgcolor="#F0F0F0" width="116"><IMG src="toshiba_16mb_minisd.gif" width="128" height="88" border="0"></TD>
+      <TD bgcolor="#F0F0F0" width="228">携帯電話に付属</TD>
+    </TR>
+    <TR>
+      <TD bgcolor="#FFFFFF" width="124">Canon</TD>
+      <TD bgcolor="#FFFFFF" width="20">SD</TD>
+      <TD bgcolor="#FFFFFF">8MB</TD>
+      <TD bgcolor="#FFFFFF" width="116"><IMG src="canon_8mb_sd.gif" width="128" height="88" border="0"></TD>
+      <TD bgcolor="#FFFFFF" width="228">デジタルビデオカメラに付属</TD>
+    </TR>
+    <TR>
+      <TD bgcolor="#F0F0F0" width="124">Vodafone?</TD>
+      <TD bgcolor="#F0F0F0" width="20">SD</TD>
+      <TD bgcolor="#F0F0F0">8MB</TD>
+      <TD bgcolor="#F0F0F0" width="116"><IMG src="vodafone_8mb_mmc.gif" width="128" height="88" border="0"></TD>
+      <TD bgcolor="#F0F0F0" width="228">携帯電話に付属</TD>
+    </TR>
+    <TR>
+      <TD rowspan="4" bgcolor="#FFFFFF" width="124">A-DATA</TD>
+      <TD bgcolor="#FFFFFF" width="20">MMC</TD>
+      <TD bgcolor="#FFFFFF">64MB</TD>
+      <TD bgcolor="#FFFFFF"><IMG src="adata_64mb_mmc.gif" width="128" height="88" border="0"></TD>
+      <TD bgcolor="#FFFFFF"><B><FONT color="#FF3300"><FONT color="#FF3300">注意！！</FONT><BR>
+      <IMG src="adata_64mb.jpg" width="72" height="80" border="0"><BR>
+      可変電源版接続回路基板</FONT></B>が必要です</TD>
+    </TR>
+    <TR>
+      <TD bgcolor="#FFFFFF" width="20" rowspan="2">SD</TD>
+      <TD bgcolor="#FFFFFF">128MB</TD>
+      <TD bgcolor="#FFFFFF"><IMG src="a_data_128mb_sd.gif" width="128" height="88" border="0"></TD>
+      <TD bgcolor="#FFFFFF"></TD>
+    </TR>
+    <TR>
+      <TD bgcolor="#FFFFFF">1GB</TD>
+      <TD bgcolor="#FFFFFF"><IMG src="adata_1gb_sd.gif" width="128" height="88" border="0"></TD>
+      <TD bgcolor="#FFFFFF"></TD>
+    </TR>
+    <TR>
+      <TD bgcolor="#FFFFFF">miniSD</TD>
+      <TD bgcolor="#FFFFFF">512MB</TD>
+      <TD bgcolor="#FFFFFF"><IMG src="adata_512mb_minisd.gif" width="128" height="88" border="0"></TD>
+      <TD bgcolor="#FFFFFF"></TD>
+    </TR>
+    <TR>
+      <TD bgcolor="#F0F0F0" width="124">ハギワラシスコム</TD>
+      <TD bgcolor="#F0F0F0" width="20">SD</TD>
+      <TD bgcolor="#F0F0F0">256MB</TD>
+      <TD bgcolor="#F0F0F0"><IMG src="hagiwara_256mb_sd.gif" width="128" height="88" border="0"></TD>
+      <TD bgcolor="#F0F0F0"></TD>
+    </TR>
+    <TR>
+      <TD bgcolor="#FFFFFF">M&amp;S</TD>
+      <TD bgcolor="#FFFFFF">SD</TD>
+      <TD bgcolor="#FFFFFF">256MB</TD>
+      <TD bgcolor="#FFFFFF"><IMG src="ms_256mb_sd.gif" width="128" height="88" border="0"></TD>
+      <TD bgcolor="#FFFFFF"></TD>
+    </TR>
+    <TR>
+      <TD bgcolor="#F0F0F0">PQI</TD>
+      <TD bgcolor="#F0F0F0">SD</TD>
+      <TD bgcolor="#F0F0F0">512MB</TD>
+      <TD bgcolor="#F0F0F0"><IMG src="pqi_512mb_sd.gif" width="128" height="88" border="0"></TD>
+      <TD bgcolor="#F0F0F0"><FONT color="#FF0000"><FONT color="#FF0000"><FONT color="#FF0000"><FONT color="#FF0000">New!!</FONT></FONT></FONT></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<BR>協力<BR>
+<A href="http://piece.no-ip.org/" target="_blank">nsawa 様<BR>
+</A><A href="http://zurachu.net/" target="_blank">ヅラChu 様</A><BR>
+<A href="http://acerola-.hp.infoseek.co.jp/" target="_blank">Acerola 様</A><BR>
+<A href="http://ymtj.hp.infoseek.co.jp/" target="_blank">大和路快速 様</A><BR>
+<A href="http://www.eps.ddnn.jp/~gin/" target="_blank">銀次郎 様</A><BR>
+<A href="http://www.mulsys.net/" target="_blank">まるしす 様</A><BR>
+<A href="http://hara-yan-web.hp.infoseek.co.jp/" target="_blank">はらやん 様</A><BR>
+<BR>
+<BR>
+<P><B><FONT size="+1" color="#FF0000">動作確認済みカードのカード情報画像募集中！</FONT></B><BR>
+画面は<A href="#EASY_CHECK_APP">簡易チェックアプリ</A>で（＾＾</P>
+<BR>
+<HR>
+<A name="NG_CARD_LIST"><B>&lt;動作不可カード報告一覧&gt;</B></A><BR>
+更新日 2004/10/20<BR>
+<TABLE cellspacing="1" bgcolor="#990000">
+  <TBODY>
+    <TR>
+      <TD width="84" bgcolor="#FF66CC">メーカー</TD>
+      <TD width="60" bgcolor="#FF66CC">種類</TD>
+      <TD width="63" bgcolor="#FF66CC">容量</TD>
+      <TD bgcolor="#FF66CC" width="116">カード情報画像</TD>
+      <TD bgcolor="#FF66CC" width="228">状況</TD>
+    </TR>
+    <TR>
+      <TD bgcolor="#FFFFFF">Panasonic</TD>
+      <TD bgcolor="#FFFFFF">SD</TD>
+      <TD bgcolor="#FFFFFF">64MB</TD>
+      <TD bgcolor="#FFFFFF" width="116">取れません</TD>
+      <TD bgcolor="#FFFFFF" width="228">FAT16でフォーマットしても、初期化に失敗するらしいです。</TD>
+    </TR>
+    <TR>
+      <TD bgcolor="#F0F0F0">HITACHI</TD>
+      <TD bgcolor="#F0F0F0">MMC</TD>
+      <TD bgcolor="#F0F0F0">16MB</TD>
+      <TD bgcolor="#F0F0F0">取れません</TD>
+      <TD bgcolor="#F0F0F0" width="228"><IMG src="hitachi_16mb.jpg" width="72" height="95" border="0"><BR>
+      FAT16でフォーマットしても、初期化に失敗します。現在調査中。</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<BR>協力<BR>
+<A href="http://zurachu.net/" target="_blank">ヅラChu 様</A><BR>
+<A href="http://acerola-.hp.infoseek.co.jp/" target="_blank">Acerola 様</A><BR>
+<A href="http://ymtj.hp.infoseek.co.jp/" target="_blank">大和路快速 様</A><BR>
+
+<P><FONT color="#FF3333"><B>動作不可報告も募集中です！</B></FONT><BR>
+</P>
+<P style="width : 512px;">今後、調査により動作可能になるかもしれませんが、とりあえず新規でカードの購入を考えている方はこれらのカードを避けてください。<BR>
+動作不可状態のカードは、もし送って頂ければ、こちらで調査させて頂きますので、御連絡ください。<BR>
+調査の際にはフォーマットする可能性が<B><FONT size="+1">大</FONT></B>ですので、あらかじめ御了承ください。</P>
+<HR>
+<B><A name="DOWNLOAD">最新版ダウンロード</A></B>
+<P>以下のアーカイブはすべてソース付きです（＾＾</P>
+<P>・MMC版MP3プレイヤー<BR>
+　（MMCライブラリをMMC対応カーネルVer.1.30のものに合わせました。<FONT color="#FF0000">New!!　2005/07/09更新</FONT>）<BR>
+　<A href="mmc_mp3_2005_0709.zip" target="_blank">mmc_mp3_2005_0709.zip（1.09MB）<BR></A><BR>
+・MMC対応カーネル Ver.1.30（MMCメニュー付き）
+<FONT color="#FF0000">New!! 2005/08/02 ReadMe更新</FONT><BR>
+　MMCライブラリの不具合を修正しました。機能的には変わりはありません。<BR>
+　<A href="mmc_pcekn_2005_0802_v130.zip" target="_blank">mmc_pcekn_2005_0802_v130.zip（1.15MB）</A></P>
+　<FONT color="#FF0000"><b>※2019/04/02 長らくリンク切れで申し訳ございませんでした。リンク復活しました。</b></FONT>
+<P><BR>
+※最新のMMC対応アプリ<FONT size="+1"><B>「P/ECEで動画プレイヤー」</B></FONT>を公開しました。<BR>
+　 なんとP/ECEで音声付動画が見れちゃいます！<BR>
+　 MP3プレイヤーとあわせてお楽しみ下さい。<BR>
+　 DL&amp;解説は<A href="../pmf/pmf.htm" target="_blank">こちら</A>から（＾＾</P>
+<HR>
+<B>Readme.txt<BR>
+<BR>
+</B>
+<TABLE>
+  <TBODY>
+    <TR>
+      <TD valign="top">・</TD>
+      <TD width="512" valign="top"><A href="readme_mmc_mp3player.txt" target="_blank">MMC版MP3プレイヤーの説明</A><BR>
+      安くなった64MB以上のカードならアルバム丸ごと入っちゃいます。<BR>
+      5倍速MMCライブラリに対応しましたので、途中で切れてしまったりしたMP3も再生できるようになったかも（＾＾
+      </TD>
+    </TR>
+    <TR>
+      <TD></TD>
+      <TD height="25"></TD>
+    </TR>
+    <TR>
+      <TD valign="top">・</TD>
+      <TD width="512" valign="top"><A href="readme_mmc_pcekn_v130.txt" target="_blank">MMC対応カーネルの説明</A><BR>
+      このカーネルをインストールすると、MMC/SD機能で標準P/ECE用のアプリも無改造でMMC対応に！<BR>
+      <FONT size="-1">（プログラムの組み方によっては対応できないものもあるかも（＾＾；）</FONT><BR>
+      <BR>
+      MMC上からpexを起動することも出来るので、余った8MBや16MBのMMC/SDカードでも100本以上のゲームやプレイヤーアプリが1枚のカードに入ります。こりゃ便利。<BR><BR>
+      <B><FONT color="#0033FF">2005/08/02追記</FONT></B><BR>
+      重要なことを今の今まで書き忘れていましたが(日記では何度か書いていますが)、MMCカーネル及び、MMCライブラリでのMMC制御機能は、データの読み出し（オープン、リード、検索）のみに対応しています。<BR>
+      P/ECEプログラムからのMMC/SDへのデータの書き込みおよび、ファイルの新規作成・削除はできませんので、あらかじめ御了承ください。m(_
+      _)m<BR>
+      MMC/SDへのデータの書き込みは、市販のカードリーダーライターを利用するか、<A href="http://piece.no-ip.org/" target="_blank">nsawaさん</A>のMMC/SDカードリーダーライターアプリをご利用ください。<BR>
+      </TD>
+    </TR>
+    <TR>
+      <TD></TD>
+      <TD height="25"></TD>
+    </TR>
+    <TR>
+      <TD valign="top">・</TD>
+      <TD valign="top">番外：<A href="mmc_taiou_kaizou_3big_game.txt" target="_blank">P/ECE HandBook Vol.2　3大ゲームのMMC対応改造法</A></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<BR>
+<HR>
+<B>MMC/SD/miniSD利用の手順</B><BR>
+<P><FONT color="#00CC99"><B><FONT size="+1" color="#006666">１．接続基板を製作します</FONT></B><BR>
+</FONT></P>
+<P style="margin-left : 20px;width : 512px;">&lt;利用する主な部品&gt;<BR>
+・カードソケット基板<BR>
+　<A href="http://www.sunhayato.co.jp/" target="_blank">サンハヤト</A>　<A href="http://www.sunhayato.co.jp/catalog/universal/memory_ck.html" target="_blank">CK-16</A>（MMC用）<BR>
+　<A href="http://www.sunhayato.co.jp/" target="_blank">サンハヤト</A>　<A href="http://www.sunhayato.co.jp/catalog/universal/memory_ck.html" target="_blank">CK-29</A>（SD用　MMCも利用可）<BR>
+<BR>
+・その他<BR>
+　抵抗　51KΩ　2本<BR>
+　積層セラミックコンデンサ　0.1μF(104)　1個<BR>
+　ユニバーサル基板　1枚<BR>
+　ピンヘッダ＆ピンソケット　カードのピン配置を見て適宜決めてください<BR>
+　ビニル線　適当<BR>
+<BR>
+&lt;回路図&gt;<BR>
+<IMG src="../../nikki_Image/mmc_kairo.jpg" width="640" height="400" border="0"><BR>
+<BR>
+この回路での製作例の写真は<A href="../../nikki/nikki0131.html#MMC_MP3" target="_blank">こちら</A><BR><BR>
+<FONT size="+1" color="#FF3300"><B>※2004/10/20 追加</B></FONT><BR>
+動作確認カード一覧で、可変電源版接続回路基板が必要と書いてあるカードでは、↑の回路ではなく、この回路を製作し、カードへの電源電圧を可変抵抗を調整して3.29Vあたりに設定してください。<BR>
+（3.29Vあたりと書きましたが、実際にはテスタで確認しながらいろいろ試して、最適な電源電圧を指定してください。）<BR>
+<BR>
+電源ラインに1KΩの可変抵抗が追加されている以外は上記の回路と変わりません。<BR>
+ちなみに、通常の3.3Vで駆動するカードもこの基板で使用することができます。<BR>
+<BR>
+&lt;<A name="KAHEN">可変電源版接続基板回路図</A>&gt;<BR>
+<IMG src="mmc_kahen_kairo.gif" width="640" height="400" border="0"></P><TABLE width="346" style="margin-left : 20px;">
+  <TBODY>
+    <TR>
+      <TD colspan="2" align="center">●接続基板の製作例●<BR>
+      <A href="http://www.sunhayato.co.jp/" target="_blank">サンハヤト</A> <A href="http://www.sunhayato.co.jp/catalog/universal/memory_ck.html" target="_blank">CK-29</A>を使用しています<BR>
+      （ちょっとぐらぐらしますが（＾＾；）</TD>
+    </TR>
+    <TR>
+      <TD align="center" width="216"><IMG src="../../nikki_Image/sd_kiban1.jpg" width="216" height="170" border="0"></TD>
+      <TD width="204" align="center"><IMG src="../../nikki_Image/sd_kiban2.jpg" width="204" height="170" border="0"></TD>
+    </TR>
+    <TR>
+      <TD valign="top" height="30" align="center" width="216">接続基板　表</TD>
+      <TD width="204" height="30" valign="top" align="center">接続基板　裏</TD>
+    </TR>
+    <TR>
+      <TD align="center" height="226" width="176" valign="top"><IMG src="../../nikki_Image/sd_kiban7.jpg" width="226" height="260" border="0"></TD>
+      <TD height="196" align="center"><IMG src="../../nikki_Image/sd_kiban3.jpg" width="68" height="72" border="0"><IMG src="../../nikki_Image/sd_kiban4.jpg" width="48" height="66" border="0"><IMG src="../../nikki_Image/sd_kiban5.jpg" width="42" height="74" border="0"><BR>
+      接続基板とP/ECEを<BR>
+      つなぐためのコネクタ<BR>
+      （裏・表・横）</TD>
+    </TR>
+    <TR>
+      <TD height="18" width="226" align="center">P/ECEに装着！</TD>
+      <TD valign="top" align="center" height="18"></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P><A name="FORMAT"><B><FONT size="+1" color="#006666">２．使用するカードをFAT16でフォーマットします</FONT><BR>
+</B></A></P>
+<P margin-left:20px style="text-align : left;margin-left : 20px;width : 512px;">
+    デジカメや携帯電話で使用していた状態のままではフォーマットがFAT16ではない可能性が高いので、カードを利用する前には必ずWindows側でフォーマットを行ってください。<BR>
+32MBより小さい容量のカードですと、普通にフォーマットするとFAT16ではなくフロッピーディスクなどと同じFAT12でフォーマットされてしまうので、以下の方法で確実にFAT16でフォーマットしてください。<BR>
+32MB以上のカードでもちゃんとFAT16でフォーマットできたかどうかが不安な場合は以下の方法でフォーマットした方が無難です。<BR>
+<BR>
+&lt;FAT16でのフォーマット方法&gt;<BR>
+・MMC or SD or miniSDがXドライブにある場合（Windows2000/XPでのやり方です）<BR>
+<BR>
+コマンドプロンプト（DOS窓）にて<BR>
+<BR>
+<B><FONT size="+1">&gt;FORMAT X: /FS:FAT /A:1024</FONT></B><BR>
+<BR>
+と、入力し、画面の指示に従ってフォーマットを行います。<BR>
+この時最後に「16ビット : FATエントリ」と表示されます。<BR>
+「12ビット : FATエントリ」等になっている場合は失敗です。<BR>
+もう一度フォーマットをやり直してください。<BR>
+（情報提供：<A href="http://piece.no-ip.org/" target="_blank">nsawaさん</A>）<BR>
+<BR>
+<B><FONT color="#FF3333">※2005/01/16　追記<BR>
+上記のやり方のFAT16でのフォーマットは、通常は32MBより小さい容量の場合にのみ行うようにして下さい。<BR>
+<BR>
+32MB以上のカードの場合は、カードライターが認識されているドライブを右クリックして表示されるメニューから「フォーマット」を選択して行ってください。<BR>
+<BR>
+ちなみに、128MB以上のカードで、上記の/A:1024をつけてやるやり方ですとクラスタサイズが小さすぎるというエラーがでてしまいます。<BR>
+<BR>
+これは、/A:1024というオプションがクラスタサイズを1024バイトに指定するためのもので、128MBではクラスタサイズを2048にしないといけないためにエラーになってしまうわけです。<BR>
+<BR>
+また、256MBのカードの場合はクラスタサイズを4096にしないといけないのですが、よく判らない場合は<BR>
+</FONT><FONT color="#FF3333"><BR>
+</FONT><FONT color="#FF3333" size="+1">＞FORMAT　X:　/FS:FAT<BR>
+</FONT><FONT color="#FF3333"><BR>
+として普通にフォーマットしてください。自動的に適切なサイズでクラスタサイズが設定されます。<BR>
+</FONT></B><BR>
+</P>
+<P>
+<FONT color="#006666"><B><FONT size="+1"><A name="EASY_CHECK_APP">３．簡易MMCチェックアプリを実行</A></FONT></B></FONT></P>
+<P style="margin-left : 20px;width : 512px;">MMC版MP3プレイヤーに付属の、簡易MMCチェックアプリ”mmc_pce.pex”をP/ECEに転送し、実行します。<BR>
+<BR>
+チェックアプリの場所は、MMC版MP3プレイヤーアーカイブ内の\USB通信でのテスト\Piece側\mmc_pceフォルダ内にあります。<BR>
+<BR>
+このアプリはMMCの初期化とカード情報の表示、ファイル一覧の表示などを行います。<BR>
+このアプリで正常に情報が表示されない場合は、接続基板や拡張端子側に問題があるか、使用しているカードがMMCライブラリ未対応のもの、もしくはフォーマット不良ということになります。<BR>
+</P>
+<P>
+<B><FONT size="+1" color="#006666">４．MP3を作成</FONT></B></P>
+<P style="margin-left : 20px;width : 512px;">MMC版MP3プレイヤーのベースとなった<A href="http://piece.no-ip.org/" target="_blank">nsawaさん</A>作のMP3プレイヤーでは通常のWindows等で聴く圧縮形式のMP3では、処理が追いつかない等の理由により聴くことができません。<BR>
+そこで、<A href="http://lame.sourceforge.net/" target="_blank">LAME</A>などの変換アプリを利用して、32kHz 48kbpsまたは32kHz
+32kbpsの形式に変換します。<BR>
+　　<BR>
+&lt;LAMEでの変換方法の例：32kHz 48kbps&gt;<BR>
+<BR>
+<B><FONT size="+1">&gt;lame --resample 32000 -m m 入力ファイル名
+出力ファイル名</FONT></B><BR>
+<BR>
+※この他のフォーマットについては、LAMEのヘルプをご参照下さい。<BR>
+　ちなみに、LAMEのヘルプは、<BR>
+　<B>&gt;LAME -?</B><BR>
+&nbsp;で見れます。<BR>
+<BR>
+変換したMP3ファイルを市販のメモリーカードライターを利用して、カードに書き込みます。<BR>
+※カードライターではファイルの書き込みに遅延書き込みという処理が行われている場合があり、コピーした内容がすぐには書き込まれないことがありますので、注意してください。<BR>
+<BR>
+<B><FONT color="#0000FF">2005/05/07　追記</FONT></B><BR>
+ちなみに、MMC版MP3プレイヤーのパッケージには、複数のMP3ファイルを一気にLAMEを使って32kHz
+48kbpsに変換するバッチファイルも同梱してありますので、よろしければお使いください。ソースフォルダ(MMC_de_MP3\mp3play)内のconv_mp3_32_48.batというファイルがそうです。<BR>
+<BR>
+変換元のMP3とLAMEとこのバッチファイルを一緒のフォルダに置いて、バッチファイルをダブルクリックすることで、自動的に&quot;mp3_32_48&quot;という名前のフォルダが作成され、その中に変換後のMP3ファイルが出力されます。<BR>
+P/ECEでは全角文字が使用できませんので、MP3のファイル名は全て英数字でお願いします。</P><P>
+<B><FONT size="+1" color="#006666">５．MMC版MP3プレイヤーをP/ECEで実行</FONT></B></P>
+<P style="margin-left : 20px;width : 512px;">さあ、最後はお待ちかねのMP3プレイヤーの実行です。<BR>
+1～４までの作業が正しく行われている場合、接続基板を装着し、カードを挿した後、MP3プレイヤーアプリを実行すれば、お望みのMP3が聴けるようになっているはずです（＾＾</P>
+<P>
+<B><FONT size="+1" color="#006666">６．応用　MMC対応カーネルのインストール</FONT></B></P>
+<P style="margin-left : 20px;width : 512px;">MP3を聴くだけでしたら、MMC版MP3プレイヤーだけで十分なのですが、せっかくの大容量メモリーカードをP/ECEのゲームに利用したい場合は、MMC対応カーネルをインストールする必要があります。<BR>
+<BR>
+インストールの手順に関しては、冒頭のReadMeなり、付属のドキュメントを参照していただくことにして、ここでは注意点のみを書いておきます。<BR>
+<BR>
+まず、MMC対応カーネルをインストールするには、P/ECEのフォントデータを再配置させる必要があります。<BR>
+再配置の詳細な方法は、MMC対応カーネルアーカイブ内のupdateフォルダにあるmakefileを参照してください。<BR>
+<BR>
+フォントの配置を変えると、従来のカーネルでは正しく文字が表示されないので、今後の作業には注意が必要です。<BR>
+ちなみに、フォントの再配置もカーネルのアップデートも、まず何かメッセージが表示されたらとりあえずAボタンを押してください。<BR>
+アップデートの手順は一番最初のフォント再配置の手順とみんな同じですので、最初の手順を良く覚えておくようにして下さい。<BR>
+<BR>
+カーネルのアップデートは、コマンドプロンプト（DOS窓）のUpdateフォルダ上から、<BR>
+<BR>
+<B>&gt;make bios</B><BR>
+<BR>
+とすることで、フォントの再配置と同じ要領でアップデートできます。<BR>
+アップデートに成功した場合、フォントは正しく表示され、スタートボタン長押しのメニューでVer.が最新のものになっていることを確認してください。<BR>
+<BR>
+もし、失敗した場合は、もう一度作業をやりなおすか、念の為MMC対応カーネルアーカイブ内の\sysdev\pcekn_mmcフォルダ内からコマンドプロンプトで<BR>
+<BR>
+<B>&gt;update</B><BR>
+<BR>
+とし、カーネルを再コンパイルしてアップデートしてみて下さい。<BR>
+<BR>
+ちなみに、P/ECEをオフィシャルのカーネルに戻す場合は、P/ECEの\usr\PIECE\binフォルダに入っているwinpku.exeで右下の「全領域（ファイルシステムを含む）をアップデート」にチェックを入れて、Ver.1.20等にアップデートし直してください。<BR>
+この時、全てのファイルが消えてしまうので、注意してください。<BR>
+<BR>
+<FONT color="#0000FF"><B>2005/04/03 追記</B><BR>
+</FONT>MMC対応カーネルVer.1.27から、アプリ起動時にカーネル側で自動的にMMCを初期化し、かつ、pceFile系APIをフックして、pceFile系APIを普通に呼ぶだけで勝手にMMCの方までファイルを読みに行く機能が追加されました（＾＾<BR>
+<BR>
+この機能を利用すると、MMC非対応のアプリが無改造でMMC対応になっちゃいます。こりゃ便利（笑）<BR>
+ただし、アプリの組み方によっては、何度もMMCの方のデータを読みに行って重くなってしまう場合もあるので、ご注意ください。<BR>
+<BR>
+また、この機能はStartボタン長押しのシステムメニューにてON/OFFの制御ができますので、必要な時だけONにしてくださいね。<BR>
+ちなみに、P/ECE起動時のデフォルト設定はOFFとなっています。<BR>
+<BR>
+この設定は、他のボリューム設定やコントラスト設定同様に電池を入れていないと忘れてしまいますので、その点は御了承下さい。<BR>
+<BR>
+<BR>
+すでに、MMCライブラリやカーネルのMMC制御APIを利用しているアプリに関しましては、一応そのままでも動くようには配慮してありますが、pceAppNotifyにてアプリ起動時のMMC初期化の有無を問い合わせしていますので、以下の様にしてカーネル側でのMMC初期化を拒否することができます。</P>
+<TABLE>
+  <TBODY>
+    <TR>
+      <TD width="540" bgcolor="#CCCCCC" height="100"><PRE style="margin-left : 20px;">//---------------------------------------------------------------------------
+int pceAppNotify(int type,int param)
+{       
+        //MMC対応カーネルVer.1.27以降での処理
+        //カーネル側でのMMC初期化を無効にする
+        if(type == APPNF_INITMMC)
+        {
+                return APPNR_REJECT;
+        }
+
+        return APPNR_ACCEPT;    //他の通知は許可
+}
+//---------------------------------------------------------------------------</PRE></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<HR>
+<B>トラブルシューティングのようなもの</B><BR>
+<P>○上手く動かないときのチェック項目</P>
+<TABLE width="593">
+  <TBODY>
+    <TR>
+      <TD width="4">・</TD>
+      <TD colspan="2">拡張端子はすべて正常につながっていますか？</TD>
+    </TR>
+    <TR>
+      <TD width="4"></TD>
+      <TD width="10" valign="top">→</TD>
+      <TD width="553" valign="top"><A href="http://www.jc2.co.jp/p/mainmenu2.htm" target="_blank">P/ECE Handbook Vol.2</A>のＬＥＤ基板を試してみる。　<A href="http://zurachu.net/200409b.html#19_t1" target="_blank">参考リンク</A></TD>
+    </TR>
+    <TR>
+      <TD width="4"></TD>
+      <TD width="10" valign="top">→</TD>
+      <TD width="553" valign="top">拡張端子の2番ピン（ＧＮＤ）の電圧が0V付近で、5番ピン（ＶＤＤ）の電圧が3.3Ｖ付近になっているかをテスタで調べる。</TD>
+    </TR>
+    <TR>
+      <TD></TD>
+      <TD></TD>
+      <TD height="25"></TD>
+    </TR>
+    <TR>
+      <TD width="4">・</TD>
+      <TD colspan="2" valign="top">接続基板の配線は大丈夫ですか？</TD>
+    </TR>
+    <TR>
+      <TD width="4"></TD>
+      <TD width="10" valign="top">→</TD>
+      <TD width="553" valign="top">回路図と、カードソケット基板の接続関係をチェック。</TD>
+    </TR>
+    <TR>
+      <TD width="4"></TD>
+      <TD width="10" valign="top">→</TD>
+      <TD width="553" valign="top">すべてのピンをテスタで導通チェック。</TD>
+    </TR>
+    <TR>
+      <TD></TD>
+      <TD></TD>
+      <TD height="25"></TD>
+    </TR>
+    <TR>
+      <TD width="4">・</TD>
+      <TD colspan="2" valign="top">メモリカードはFAT16でフォーマットされていますか？</TD>
+    </TR>
+    <TR>
+      <TD width="4"></TD>
+      <TD width="10" valign="top">→</TD>
+      <TD width="553" valign="top"><A href="#FORMAT">FAT16でフォーマット</A>。</TD>
+    </TR>
+    <TR>
+      <TD height="10"></TD>
+      <TD height="10"></TD>
+      <TD height="25"></TD>
+    </TR>
+    <TR>
+      <TD width="4" valign="top">・</TD>
+      <TD colspan="2" valign="top">メモリカードが動作確認済みのものですか？</TD>
+    </TR>
+    <TR>
+      <TD width="4"></TD>
+      <TD width="10" valign="top">→</TD>
+      <TD width="553" valign="top">もし一覧にない場合は<A href="mailto:madoka@olive.plala.or.jp?Subject=MMCについて質問です">まどか</A>まで連絡してみてください。</TD>
+    </TR>
+    <TR>
+      <TD></TD>
+      <TD></TD>
+      <TD height="25"></TD>
+    </TR>
+    <TR>
+      <TD width="4">・</TD>
+      <TD colspan="2" valign="top">MMC版MP3プレイヤーおよびMMC対応カーネルは最新版ですか？</TD>
+    </TR>
+    <TR>
+      <TD width="4"></TD>
+      <TD width="10" valign="top">→</TD>
+      <TD width="553" valign="top"><A href="#DOWNLOAD">最新版</A>を使ってください。　</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P><BR>
+</P>
+<HR>
+<P>なにか判らないことがありましたら、遠慮なく<A href="mailto:madoka@olive.plala.or.jp?Subject=MMCについて質問です">まどか</A>まで御連絡ください。</P>
+</BODY>
+</HTML>

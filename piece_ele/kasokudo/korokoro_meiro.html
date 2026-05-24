@@ -1,0 +1,346 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<META name="GENERATOR" content="IBM HomePage Builder 2001 V5.0.0 for Windows">
+<TITLE>加速度センサで遊ぼう！Ｐ／ＥＣＥでコロコロ迷路</TITLE>
+<script language="JavaScript" src="../../mycount.js"></script>
+</HEAD>
+<BODY>
+<P align="center"><IMG src="meiro_logo.gif" width="575" height="325" border="0"></P>
+<HR>
+
+<TABLE width="100%" bgcolor="#8080ff">
+  <TBODY>
+    <TR>
+      <TD width="100%" align="left" height="24"><FONT size="+3" color="#FFFFFF"><B>　はじめに</B></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<TABLE>
+  <TBODY>
+    <TR>
+      <TD width="512" height="98" align="left" valign="top">　どうも、P/ECEで電子工作勉強中のまどかです。<BR>
+      <BR>
+      　このコーナーでは、P/ECEに隠された「拡張端子」を利用して、電子工作の勉強をしながら自作のハードでいろいろおもしろいことをやっちゃお～というコーナーです（＾＾；<BR>
+      <BR>
+      　さて、今回は最近任天堂の人気キャラクタである「カービィ」シリーズのＧＢＣ専用ソフト「コロコロカービィ」で注目を浴びた、「加速度センサ」なる部品を使って、自分で「コロコロカービィ」みたいなゲームを作ってしまおうということで、「コロコロ迷路」の製作です。<BR>
+      <BR>
+      　<B><FONT color="#FF0000">なお、このページを参考にしての作業はすべて自己責任で行ってください。</FONT></B><BR><BR><BR><BR>
+      </TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<TABLE width="100%" bgcolor="#8080ff">
+  <TBODY>
+    <TR>
+      <TD width="100%" align="left" height="24"><FONT size="+3" color="#FFFFFF"><B>　作ろうと思ったきっかけ</B></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<TABLE>
+  <TBODY>
+    <TR>
+      <TD width="512" height="98" align="left" valign="top">　「コロコロ迷路」を作ろうと思ったきっかけっていうより、「加速度センサ」を使ってみようと思ったきっかけは、<A href="http://www1.accsnet.ne.jp/~et/" target="_blank">えとさん</A>のP/ECEのハード関連の製作記事で、詳しくは書かれていませんでしたが、この「加速度センサ」がP/ECEでも扱えて、これを使えばコロコロカービィみたいなのが作れると紹介してあったのを見て、おもしろそうだなと思ったのがきっかけでした。<BR>
+      <BR>
+      　ですが、最初<A href="http://www1.accsnet.ne.jp/~et/etul/piece_acc.html" target="_blank">えとさんの記事</A>を見たときは、加速度センサの使い方が全然想像できなくて、そもそも加速度センサって何？　という疑問から、いろいろなサイトを回ってみると、この加速度センサを使っていろいろ遊んでいる人がいて、そこで初めて加速度センサのおもしろさを知ったのでした（＾＾；<BR>
+      <BR>
+      　今回は、他の人が発表している製作記事を、自分なりに工夫して作ってみるという、基本的な勉強法の参考になれば嬉しいです。<BR>
+      <BR>
+      　何事も人の真似から始めてみるのが一番と、私は思っています。けど、ほんとに同じことだけをしていては、その人を超えることは絶対できないので､必ず自分なりの工夫をすることを私は心がけています。<BR>
+      <BR>
+      　ま、そんなことより、「自分もやってみたい」という好奇心と、実際にやってみる行動力が大切ですね（＾＾<BR>
+      <BR><BR>
+      <BR>
+      </TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<TABLE width="100%" bgcolor="#8080ff">
+  <TBODY>
+    <TR>
+      <TD width="100%" align="left" height="24"><FONT size="+3" color="#FFFFFF"><B>　加速度センサって何？</B></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<TABLE>
+  <TBODY>
+    <TR>
+      <TD width="512" height="98" align="left" valign="top">　さて、まずは今回の作品のメインの部品である「加速度センサ」の説明から入りましょう。<BR>
+      <BR>
+      　今回使用した加速度センサは<A href="http://www.analog.co.jp/index.html" target="_blank">アナログ・デバイセズ社</A>のADXL202という部品で、この部品は比較的低価格ながらも±２Ｇの加速度を測定することができます。<BR>
+      <BR>
+      　また、Ｘ軸・Ｙ軸の2方向について加速度を測定することができるので、水平方向に部品を設置した場合、前後・左右のどの方向に部品が傾いたかを調べることが可能です。<BR><BR>
+      　まぁ、部品の中に小さな球が入っていて、それがセンサの上を転がるので傾いている方向と速度が測定できるというイメージで考えてもらえればいいと思います。（実際は違う構造になってますが（＾＾；）<BR>
+      <BR>
+      　と、なんとなくこの部品の特徴がわかったところで（わかってもらえたでしょうか（＾＾；）実際に写真で見ていただきましょう。<BR>
+      <BR>
+      　<IMG src="adxl202.jpg" width="321" height="289" border="0"><BR>
+      <BR>
+      　緑の基板の上に乗っかっているこの部品が加速度センサ「ADXL202」です。<BR>
+      　この部品は専用基板に実装する表面実装型（足が短く平べったいものね）の部品なので､電子工作で扱いやすいように、ピンの間隔を変換するピッチ変換基板（3枚入りで340円くらい）の上にハンダ付けしてありますが、７×10(mm)くらいの小さな部品です。<BR>
+      <BR>
+      　最初のこのピッチ変換基板にハンダ付けするのがちょっと難しいですが、この基板に乗っけてしまえは、あとは他の部品と一緒なので､普通に扱えます。<BR>
+      　ちなみに、表面実装型の足をハンダ付けする場合は、ハンダごてに少量のハンダを盛って、足をなぞるようにハンダを伸ばしていくとうまくハンダ付けできます（＾＾<BR>
+      　ハンダ付けするまえにフラックスという液体を基板にひと塗りしておくとハンダ付けがしやすくなるらしいです。（私は付けずにやっちゃいましたが）<BR>
+      <BR>
+      　で、この部品からは、測定したＸ・Ｙ軸方向への加速度がデジタル信号のデューティ・サイクルで出力されます。<BR>
+      <BR>
+      　おっと、ここで意味不明な言葉がでてきましたね。<BR>
+      <BR>
+      　「デューティ・サイクル」<BR>
+      <BR>
+      　さて、これはなんでしょうか？　英語で書くと&quot;duty
+      cycle&quot;。オンライン辞書で調べると「負荷サイクル」らしいです。うーん、これじゃ意味がさっぱりわかりませんね（＾＾；<BR>
+      <BR>
+      　というわけで、簡単に説明しますと、実はこれ「信号のある周期に対するＯＮになっている時間の比率」なんです。（デジタル信号はＯＮとＯＦＦの2つの状態の繰り返しですよね）<BR>
+      　と、言葉で書いてもあんまりピンと来ないと思いますので図解で説明しますと、<BR>
+      　<BR>
+      　<IMG src="dutycycle.gif" width="482" height="365" border="0"><BR>
+      <BR>
+      　ということで、ＯＮの時間とＯＦＦの時間が同じになったときデューティ比は50％になり、ADXL202では軸に対してどちらにも傾いていない状態（0G）を表しています。<BR>
+      <BR>
+      　また、デューティ・サイクルのある周期（Ｔ２）は、ADXL202の5番ピンに接続する抵抗の値でユーザが設定することができます。<BR>
+      　ちなみに、周期（Ｔ２）は以下の式で導くことができ、125KΩの抵抗を接続すると1msとなります。<BR>
+      <BR>
+      　・抵抗の値による周期の計算<BR>
+      <BR>
+      　　　<FONT size="+2"><B>Ｔ２(秒) = Rset(Ω) / 125M(Ω)<BR>
+      </B>　　</FONT>※Rsetは5番ピンに接続する抵抗の値<FONT size="-1"><BR>
+      </FONT><BR>
+      　今回の製作では、1ＭΩの抵抗を接続して、約8msの周期で扱っています。<BR>
+      　<BR>
+      　ちょっと話が難しくなってきましたが、実際にゲームで使用する場合には､デューティ・サイクル出力される加速度信号の状態をずーっと監視して、抵抗で設定した周期と調べたＯＮ状態の時間をもとにＸ軸・Ｙ軸の傾き（加速度）を求めて、ゲームのキャラクタの動きに反映させます。<BR>
+      <BR>
+      <BR>
+      <BR>
+      </TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<TABLE width="100%" bgcolor="#8080ff">
+  <TBODY>
+    <TR>
+      <TD width="100%" align="left" height="24"><FONT size="+3" color="#FFFFFF"><B>　P/ECEとの接続</B></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<TABLE>
+  <TBODY>
+    <TR>
+      <TD width="512" height="98" align="left" valign="top">　はい、加速度センサの使い道がわかったところで、今度は加速度センサをP/ECEの拡張端子に接続してみましょう。<BR>
+      <BR>
+      　接続する際には、<A href="http://www.analog.co.jp/index.html" target="_blank">アナログ・デバイセズのサイト</A>からＤＬできるADXL202のデータシートをよく読んで、抵抗の値・コンデンサの容量、部品を配置する位置に注意してくださいね。<BR>
+      　ちなみに、ADXL202本体もＸ・Ｙ軸のプラスの方向が決まっているので､自分が使おうと思っている方向を確認して取り付けるようにしてくださいね。<BR>
+      <BR>
+      　と、そこさえ注意すればあとは普通につなげるだけなので､この回路図を参考につなげてみてください。（私も<A href="http://www1.accsnet.ne.jp/~et/" target="_blank">えとさん</A>のところで公開されている回路図を参考につなげました（＾＾；）<BR>
+      　<BR>
+      　クリックすると拡大表示されます。<BR>
+      　<A href="korokoro_kairozu.gif" target="_blank"><IMG src="korokoro_kairozu_s.gif" width="320" height="200" border="0"></A><BR>
+      <BR>
+      　ちなみに、今回私が製作した基板はこんな感じです（＾＾；<BR>
+      　（クリックすると拡大表示されます）<BR>
+      <BR>
+      　<A href="kairo_omote.jpg" target="_blank"><IMG src="kairo_omote_s.jpg" width="240" height="180" border="0"></A><BR>
+      　真ん中に加速度センサを配置してみました。<BR>
+      <BR>
+      　<A href="kairo_ura.jpg" target="_blank"><IMG src="kairo_ura_s.jpg" width="240" height="180" border="0"></A><BR>
+      　P/ECEに取り付けると、ちょうどP/ECEの画面<BR>
+      　の裏側に加速度センサがきます。<BR>
+      　（コロコロカービィの真似です（＾＾；）<BR>
+      <BR>
+      　<A href="kairo_yoko.jpg" target="_blank"><IMG src="kairo_yoko_s.jpg" width="240" height="180" border="0"></A><BR>
+      　上から見るとこんな感じ。<BR><BR>
+      　ほとんどハンダ付けする部品はありませんが、一応部品一覧を紹介しておきます。<BR>
+      　　
+      <TABLE bgcolor="#0080ff" width="499">
+        <COL span="1" width="1">
+        <TBODY>
+          <TR>
+            <TD align="center" bgcolor="#00FFCC" width="204">部品名</TD>
+            <TD align="center" bgcolor="#00FFCC" width="37">価格</TD>
+            <TD bgcolor="#00FFCC" align="center" width="32">個数</TD>
+            <TD align="center" bgcolor="#00FFCC" width="198">備考</TD>
+          </TR>
+          <TR>
+            <TD bgcolor="#FFFFFF" width="204">加速度センサ ADXL202</TD>
+            <TD bgcolor="#FFFFFF" align="right" width="37">2800</TD>
+            <TD bgcolor="#FFFFFF" align="right" width="32">1</TD>
+            <TD bgcolor="#FFFFFF" width="198">秋月で買うとこれくらいだそうです<BR>
+            ちなみに私はコロコロカー…ごにょごにょ</TD>
+          </TR>
+          <TR>
+            <TD bgcolor="#FFFFFF" width="204">16Pinコネクタ</TD>
+            <TD bgcolor="#FFFFFF" align="right" width="37">240</TD>
+            <TD bgcolor="#FFFFFF" align="right" width="32">1</TD>
+            <TD bgcolor="#FFFFFF" width="198">けっこう高いです</TD>
+          </TR>
+          <TR>
+            <TD bgcolor="#FFFFFF" width="204">ユニバーサル基板（スルーホール）</TD>
+            <TD bgcolor="#FFFFFF" align="right" width="37">400</TD>
+            <TD bgcolor="#FFFFFF" align="right" width="32">1</TD>
+            <TD bgcolor="#FFFFFF" width="198">穴のハンダ付けできる部分が、裏と表でつながっているものです</TD>
+          </TR>
+          <TR>
+            <TD bgcolor="#FFFFFF" width="204">1kΩの抵抗</TD>
+            <TD bgcolor="#FFFFFF" align="right" width="37">2</TD>
+            <TD bgcolor="#FFFFFF" align="right" width="32">2</TD>
+            <TD bgcolor="#FFFFFF" width="198"></TD>
+          </TR>
+          <TR>
+            <TD bgcolor="#FFFFFF" width="204">1MΩの抵抗</TD>
+            <TD bgcolor="#FFFFFF" align="right" width="37">2</TD>
+            <TD bgcolor="#FFFFFF" align="right" width="32">1</TD>
+            <TD bgcolor="#FFFFFF" width="198">デューティ・サイクルの周期を決める抵抗です<BR>
+            自分で使用する周期に合ったものを選んでください。</TD>
+          </TR>
+          <TR>
+            <TD bgcolor="#FFFFFF" width="204">0.1μFのセラミックコンデンサ</TD>
+            <TD bgcolor="#FFFFFF" align="right" width="37">8</TD>
+            <TD bgcolor="#FFFFFF" align="right" width="32">3</TD>
+            <TD bgcolor="#FFFFFF" width="198">104と刻印してある小さい青いやつ</TD>
+          </TR>
+          <TR>
+            <TD bgcolor="#FFFFFF" width="204">丸穴ピンソケット</TD>
+            <TD bgcolor="#FFFFFF" align="right" width="37">500</TD>
+            <TD bgcolor="#FFFFFF" align="right" width="32">1</TD>
+            <TD bgcolor="#FFFFFF" width="198">高さ調整用</TD>
+          </TR>
+          <TR>
+            <TD bgcolor="#FFFFFF">ICソケット</TD>
+            <TD bgcolor="#FFFFFF" align="right">80</TD>
+            <TD bgcolor="#FFFFFF" align="right">1</TD>
+            <TD bgcolor="#FFFFFF">念の為</TD>
+          </TR>
+          <TR>
+            <TD bgcolor="#FFFFFF" width="204">ピッチ変換基板</TD>
+            <TD bgcolor="#FFFFFF" align="right" width="37">340</TD>
+            <TD bgcolor="#FFFFFF" align="right" width="32">1</TD>
+            <TD bgcolor="#FFFFFF" width="198">3枚入り</TD>
+          </TR>
+          <TR>
+            <TD bgcolor="#FFFFFF">オスオスのピン</TD>
+            <TD bgcolor="#FFFFFF" align="right">500</TD>
+            <TD bgcolor="#FFFFFF" align="right">1</TD>
+            <TD bgcolor="#FFFFFF">ジャンパピンでも可</TD>
+          </TR>
+          <TR>
+            <TD bgcolor="#FFFF33" width="204">部品合計金額</TD>
+            <TD bgcolor="#FFFFCC" colspan="3" align="center">4890円</TD>
+          </TR>
+        </TBODY>
+      </TABLE>
+      <BR>
+      　こうしてみると、加速度センサが低価格版といってもけっこうするので、ちょっとお金がかかっちゃいますね。<BR>
+      　けど、私がやったみたいに、この加速度センサが使われているあるモノを中古で手に入れれば、もうちょっと安く仕上げることができます。<BR>
+      　そこあるモノとは、コロコロカー…ごにょごにょ（＾＾；<BR>
+      <BR><BR>
+      <BR>
+      </TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<TABLE width="100%" bgcolor="#8080ff">
+  <TBODY>
+    <TR>
+      <TD width="100%" align="left" height="24"><FONT size="+3" color="#FFFFFF"><B>　プログラムの話</B></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<TABLE>
+  <TBODY>
+    <TR>
+      <TD width="512" height="98" align="left" valign="top">　さて、これで「コロコロ迷路」に必要なハードは完成したのですが、肝心のハードを制御するソフトの方も作らないと､なんにも遊べませんので、ここでは実際の制御プログラムの話に入りたいと思います。<BR>
+      <BR>
+      　ですが、今回のこのプログラムでは「割り込み」というP/ECEのCPUの仕組みを利用しているので、ちょっと難しいお話になるかもしれません。　<BR>
+      　といっても、「割り込み」を理解してしまえば、あとはそんなに難しくないので､頑張ってくださいね。<BR>
+      <BR>
+      　というわけで、まずは「割り込み」という仕組みについて説明します。<BR>
+      　<BR>
+      　「割り込み」というのは、拡張端子のI/Oに何かの信号が入力されたとか､タイマーで指定の時間カウントしたとかいう､何らかの要因によってメインで走っているプログラム中に割り込んで、割り込み処理用のプログラムが実行されるという仕組みのことです。<BR>
+      <BR>
+      　よーするになんか作業している時に電話がかかってきて、「もしもーし。はいはい、うんわかった。じゃねー」とちょっと電話をしてまた元の作業を再開する。この電話がいわゆる割り込み処理です（＾＾；<BR>
+      <BR>
+      　そして、P/ECEで割り込み処理を実現するには、P/ECEの謎のＡＰＩ（笑）「pceVectorSetTrap」を使います。<BR>
+      　実はこれ、232個もある割り込み要因に対して、どの関数を実行するかを設定するＡＰＩで、今回の「コロコロ迷路」で使用したような、拡張端子のI/Oを監視する割り込みという、普段使われていない割り込みに対して、自分で用意した関数を登録することができます。<BR>
+      <BR>
+      　ちなみに、今回使用した割り込みは、ベクタ番号69と70の「ポート入力割り込み」というのを使いました。このポート入力割り込みというのは､ポートの値が変わったときに割り込み要求が発生する割り込みで、今回は加速度センサの出力がＯＦＦ(Low)からＯＮ(High)に変わる瞬間を監視させています。<BR>
+      <BR>
+      　割り込みを使うと、自分でいちいち値を調べて判定しなくて良いので､効率的なプログラムを書くことができます。<BR>
+      <BR>
+      　ちなみに、割り込みの種類はP/ECE付属のドキュメントの中にある「ハードウェア割り込み表」を見るといろいろわかります。「ハードウェア割り込み表」はスタートメニューからたどって「P/ECEの世界へようこそ」というページを開くと、左のメニューに「HARDSPEC」というボタンがあるので、それを展開させると行けます。<BR>
+      <BR>
+      　で、この中の割り込みで「未使用」と書かれたものはユーザで使うことができる割り込みなのですが､EXT端子用と書いてあるものと、空いてるタイマー、そして今回使用したポート入力割り込みくらいしか使えません（＾＾；<BR>
+      　<BR>
+      　各割り込みの使用方法は、ハードウェア資料の&quot;...\PIECE\docs\datasheet\EPSON\s1c33209_221_222j.pdf&quot;の各項目を参照してくださいね。<BR>
+      　ちなみに、今回使ったポート入力割り込みの使い方は、P.365からをよーく読んで理解してください。<BR>
+      　<BR>
+      　お約束ですが、「コロコロ迷路」のソース一式を用意しましたので、割り込み処理の参考にしてくださいね。<B><FONT size="+1" color="#FF0000">（ただし、このソースコードを利用してのいかなる損害にも、まどかは責任を負いませんので、あらかじめ御了承ください。m(-_-)m）</FONT></B><BR>
+      <BR>
+      　それでは、ソースコードです。<BR>
+      　<A href="korokoro_meiro_2002_1025.zip" target="_blank">korokoro_meiro_2002_1025.zip(22.6kB)</A><BR>
+      <BR>
+      　実はまだこれ調整中のソースなので､ちょっと水平位置のキャリブレーションがなかなか上手くできてません（＾＾；<BR>
+      　ゲーム中にＡボタンを押すと、その状態を水平位置としてキャリブレーションするのですが､Ａボタンを押した瞬間のP/ECEの傾きを見ているので､ボタンを押してちょっと傾いた状態が水平位置として認識されてしまいます。<BR>
+      <BR>
+      　なので、Ａボタンを押す時は、そぉーっと押してくださいね（＾＾；<BR>
+      <BR>
+      <BR>
+      <BR>
+      </TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<TABLE width="100%" bgcolor="#8080ff">
+  <TBODY>
+    <TR>
+      <TD width="100%" align="left" height="24"><FONT size="+3" color="#FFFFFF"><B>　動いているのも見てね（＾＾</B></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<TABLE>
+  <TBODY>
+    <TR>
+      <TD width="512" height="98" align="left" valign="top">　はい、「コロコロ迷路」に必要なハードウェア・ソフトウェアの製作を順に見てもらいましたが、やっぱり実際に動いているところを見てもらわないことには､おもしろさは伝わらないと思います。<BR>
+      <BR>
+      　というわけで、ちょっと見にくいですが、私が撮影した動画を見て、楽しさを想像してください（＾＾<BR>
+      　<IMG src="meiro.jpg" width="319" height="241" border="0"><BR>
+      　<A href="http://www.trafficsim.co.jp/~madoka/piece/movie/meiro.mpg" target="_blank"><B><FONT size="+1">高解像度版（19.9ＭＢ　約2分間）</FONT></B></A><BR>
+      　<FONT size="+1"><A href="http://www.trafficsim.co.jp/~madoka/piece/movie/meiro_low.mpg" target="_blank">低解像度版（2.8MB）</A></FONT><BR>
+      <BR><BR>
+      <BR>
+      </TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<TABLE width="100%" bgcolor="#8080ff">
+  <TBODY>
+    <TR>
+      <TD width="100%" align="left" height="24"><FONT size="+3" color="#FFFFFF"><B>　最後に</B></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<TABLE>
+  <TBODY>
+    <TR>
+      <TD width="512" height="98" align="left" valign="top">　さて、今回の「加速度センサで遊ぼう！　P/ECEでコロコロ迷路」の製作、いかがだったでしょうか。<BR>
+      　<BR>
+      　今回のネタは、私のオリジナルというわけではありませんが、自分で工夫して「コロコロ迷路」というゲームに発展させた点では、オリジナルといえるのではないかと思っています。<BR>
+      <BR>
+      　このように、他の人が発表したネタを実際に自分でやってみるということは､先の発表者の偉大さを直に感じるばかりでなく、自分の中にも貴重な経験として必ず活きてくるので、おもしろそうなネタを見つけたら、どんどん作っちゃいましょう。そして、どんどん発表してしまいましょう。<BR>
+      　　<BR>
+      　というわけで、今回はここまで。<BR>
+      　それでは、P/ECEを通じて未来のエンジニアが育つことを願いつつ､お別れです。<BR>
+      　<BR>
+      　でわでわ～</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+</BODY>
+</HTML>

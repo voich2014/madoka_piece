@@ -1,0 +1,187 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<META name="GENERATOR" content="IBM HomePage Builder 2001 V5.0.0 for Windows">
+<TITLE>PS2のToHeart2OP動画をPMFにしよう！</TITLE>
+</HEAD>
+<BODY>
+<TABLE width="640">
+  <TBODY>
+    <TR>
+      <TD><IMG src="13color_gosa.jpg" width="128" height="88" border="0"></TD>
+      <TD valign="middle" width="508"><FONT size="+2"><B>PS2版　ToHeart２のOP動画をPMFに変換しよう！</B></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<HR width="640" size="2" align="left">
+<TABLE width="640" bgcolor="#8080ff" height="5">
+  <TBODY>
+    <TR bgcolor="#8080ff">
+      <TD width="640" bgcolor="#8080ff"><B><FONT color="#FFFFFF" size="+1">はじめに</FONT></B></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<TABLE width="640">
+  <TBODY>
+    <TR>
+      <TD>　このページでは、<A href="../pmf/pmf.htm" target="_blank">P/ECEの動画プレイヤー</A>で利用するPMFを作る際の参考として、手始めにPS2版ToHeart2のOP動画をPMFに変換する方法を紹介します。<BR>
+      <BR>
+      　一般的なMPEGやAVI形式の動画をPMFに変換するのは、PMFプレイヤー付属の一発変換ツール（PMF_Convertor）にドラッグ＆ドロップするだけで良いので、やり方を説明するまでもないのですが、やっぱり何かサンプルがあった方が良いと思い、<A href="http://zurachu.net/" target="_blank"><BR>
+      ヅラChuさん</A>の2005年夏コミ本に連動して、このページを作ることにしました。<BR>
+      　興味を持たれた方は、是非ヅラChuさんのP/ECE本の方もよろしくお願いします。<BR>
+      　私も数ページですが、記事を書かせていただきましたので、そちらの方もよろしく～（＾＾<BR>
+      <BR>
+      　あ、そうそう。<BR>
+      　ToHeart2のOP動画をPMFに変換するのは、ヅラChuさんが先にやられているので、ほとんど同じことを書くことになりますが、<A href="http://zurachu.net/200503a.html#01_t2" target="_blank">ヅラChuさんの例</A>にある、映像データ（M2V)と音声データ（WAV)を多重化するツール「<A href="http://www.tmpgenc.net/j_main.html" target="_blank">TMPGEnc</A>」は、試用期間が過ぎると、MPEG2が扱えなくなってしまいますので、ここでは、TMPGEncを使わずに、全て（TH2のゲームディスク以外）無料で手に入るツールを使って変換する方法を紹介したいと思います。<BR>
+      <BR>
+      </TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<TABLE width="640" bgcolor="#8080ff" height="5">
+  <TBODY>
+    <TR bgcolor="#8080ff">
+      <TD width="640" bgcolor="#8080ff"><B><FONT color="#FFFFFF" size="+1">必要なもの</FONT></B></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<TABLE width="640">
+  <TBODY>
+    <TR>
+      <TD>ToHeart2のOP動画をPMFに変換するに当たって、必要なモノを以下に書きます。<BR>
+      <BR>
+      ・<A href="http://www.aquaplus.co.jp/" target="_blank">PS2版ToHeart2</A>のゲームディスク（買ってください（＾＾；）<BR>
+      <BR>
+      ・<A href="http://www.project-fao.org/#PSSDemux" target="_blank">PSS_demux（PSSファイル非多重化ツール（C）ふぁおさん）</A><BR>
+      <BR>
+      ・<A href="http://www.microsoft.com/japan/msdn/directx/downloads.asp" target="_blank">DirectX SDK</A><BR>
+      　Windows2000までの方は<A href="http://www.microsoft.com/downloads/details.aspx?FamilyId=6CDFCCD3-6EFF-456E-AE90-E424105AB69E&amp;displaylang=en" target="_blank">DirectX 9.0 SDK Update (Summer 2004)</A>の方をダウンロードしてください。<BR>
+      　XPの方は最新版で良いと思います。<BR>
+      　っていうか、必要なのは、SDKの中に含まれる”<FONT size="+1"><B>graphedt.exe</B></FONT>”というDirectShow用のツールなので、すでに過去のSDKをお持ちで、このツールがインストールされている方は上記のDirectX
+      SDKのダウンロードは不要です。<BR>
+      <BR>
+      ・<A href="http://sourceforge.net/project/showfiles.php?group_id=98765&amp;package_id=105790" target="_blank">GPL MPEG-1/2 Decoder</A><BR>
+      　フリーのMPEG1/2デコーダフィルターです。これが無いとAVIに上手く変換できないみたいです。<BR>
+      　リンク先のページの「MpegDecoder012.msi」をダウンロードしてインストールしてください。<BR>
+      　これは、先述の”graphedt.exe”上で使えるほか、WindowsMediaPlayerやRealPlayerでも使われます。<BR>
+      <BR>
+      ・<A href="http://www.divx.com/divx/create/?lang=ja" target="_blank">DivXコーデック</A><BR>
+      　今回紹介する方法では、PSS形式の動画をGraphEditを使ってAVI形式のファイルに変換するのですが、普通にAVIに変換すると、未圧縮のファイルとなり、数GBの空き容量を必要とするので、DivXエンコーダフィルターを利用することにより、DivXで圧縮されたAVIファイルを作成します。<BR>
+      　リンク先右上の「無料トライアル」から、「DivXCreate.exe」をダウンロードし、指示に従ってインストールしてください。<BR>
+      　これによって、DivXエンコーダ他が、DirectShowフィルターとしてインストールされます。<BR>
+      <BR>
+      </TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<TABLE width="640" bgcolor="#8080ff" height="5">
+  <TBODY>
+    <TR bgcolor="#8080ff">
+      <TD width="640" bgcolor="#8080ff"><B><FONT color="#FFFFFF" size="+1">やりかた</FONT></B></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<TABLE width="640">
+  <TBODY>
+    <TR>
+      <TD><B><U><FONT size="+1">①PSS形式から映像と音声を分離</FONT></U></B><BR><BR>
+      　必要なツールのPSS_demuxを使って、PSS形式のOP動画ファイル”TH2OP.PSS”を映像部（MPEG2形式のビデオ）と音声部（WAVE形式）のファイルに分割します。<BR>
+      <BR>
+      　PSSファイルは、<A href="http://edarapnug.hp.infoseek.co.jp/mpc_j/" target="_blank">MediaPlayerClassic</A>を使うと普通に再生できるようですが、このツールは独自の展開ルーチンを使って再生していて、DirectShowフィルターを利用していないので、DirectShowフィルターを使って変換するPMF_Convertorでは手も足も出ないのですよ（-
+      -；<BR><BR>
+      　と、いうわけで、ToHeart2ゲームディスクの「P」というフォルダの中にある、”TH2OP.PSS”というファイルをハードディスクのどこかにコピーして、コピーしたものをPSS_dwmuxにドラッグ＆ドロップします。<BR>
+      　すると、みゃーっとゲージが伸びたところで、ドロップした”TH2OP.PSS”と同じフォルダに”TH2OP.m2v”<BR>
+      と”TH2OP_pcm.wav”というファイルができると思います。<BR>
+      <BR>
+      <BR>
+      <BR>
+      <B><U><FONT size="+1">②GraphEditでフィルターを準備</FONT></U></B><BR><BR>
+      　次に、GraphEditを起動し、先ほどの”TH2OP.m2v”をドラッグ＆ドロップします。<BR>
+      　すると、MPEG2を再生できる環境が整っていると、以下の様に勝手に再生に必要なDirectShowフィルターが選択されて表示されます。<BR>
+      </TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<TABLE width="640">
+  <TBODY>
+    <TR>
+      <TD>
+      <BR>
+      　<IMG src="graphedit_0.jpg" width="514" height="383" border="0"><BR>
+      　GraphEditを起動したところ<BR>
+      <BR>
+      　<IMG src="graphedit_1.jpg" width="804" height="240" border="0"><BR>
+      　TH2OP.m2vをドラッグ&amp;ドロップしたところ、運が良いとこうなります（笑）<BR>
+      <BR>
+      <BR>
+      <IMG src="graphedit_2.jpg" width="1114" height="282" border="0"><BR>
+      　普通はこうなると思います。<BR>
+      　必要なのは、左のほうの、”TH2OP.m2V”と&quot;MPEG-2
+      Splitter&quot;と、”GPL MPEG-1/2 Decoder”なので、<BR>
+      　下の方の図のようになった方は、MPEG-2
+      Splitterより右のフィルタを削除しちゃってください。<BR>
+      　削除は普通に選択してDeleteキーで出来ます。<BR>
+      <BR>
+      　そして、<IMG src="filter_button.jpg" width="113" height="93" border="0">をクリックして、フィルタ―一覧の、「DirectShow
+      Filters」の中から、<BR>
+      　「GPL MPEG-1/2 Decoder」をダブルクリックして追加してください。<BR>
+      <BR>
+      　はじめの方の図の様にいきなり「GPL MPEG-1/2
+      Decoder」が出てきた方も、Video Rendererは必要<BR>
+      　ありませんので、削除しておいてください。<BR>
+      　ちなみに、上記の２つの図の状態で、緑の再生ボタンをクリックすると、OP動画のビデオのみが再生<BR>
+      　できます（＾＾<BR>
+      <BR>
+      <BR>
+      　さて、次に、またフィルター一覧から、以下のものを追加して次の図の様に接続します。<BR>
+      　フィルター同士の接続は、フィルターの枠の小さい出っ張りの部分をクリックしてドラッグすることで、<BR>
+      　矢印が表示されますので、それを接続先のフィルタの入力側の出っ張りにひっつけてください。<BR>
+      　<BR>
+      　＜追加するフィルター＞<BR>
+      　<B>・AVI Muxフィルター</B><BR>
+      　　　映像と音声を合成してAVIとして出力するフィルターです。<BR>
+      　　　「DirectShow Filters」の上の方にあります。<BR>
+      <BR>
+      　<B>・File Source(Async.)フィルター</B><BR>
+      　　　いわゆるソースフィルターです。ダブルクリックして追加すると、読み込むファイルを聞いてくるので、<BR>
+      　　　音声部にあたる、”TH2OP_pcm.wav”を選択してください。<BR>
+      　　　「DirectShow Filters」の真ん中くらいにあります。<BR>
+      <BR>
+      　<B>・File Writerフィルター</B><BR>
+      　　　これは読んで字のごとく、書き出し用のフィルターです。<BR>
+      　　　これもダブルクリックして追加すると、出力先のファイル名を聞いてくるので、適当に”TH2OP.avi”と<BR>
+      　　　しておいてください。<BR>
+      　　　「DirectShow Filters」の真ん中くらいにあります。<BR>
+      　<BR>
+      　<B>・DivXR 6.0 Codecフィルター</B><BR>
+      　　　DivXのエンコーダフィルターです。Ver.はインストールするコーデックによって変わってきます。<BR>
+      　　　これは、フィルター一覧のカテゴリの下の方にある、「Video
+      Compressors」の中にあります。<BR>
+      <BR><BR>
+      <BR>
+      <B><U><FONT size="+1">③フィルターを接続して実行</FONT></U></B><BR><BR>
+      <IMG src="graphedit_3.jpg" width="1038" height="342" border="0"><BR>
+      　追加した各フィルターを接続するとこのようになります。<BR>
+      　この中で、「Wave Parser」フィルターは、「TH2OP_pcm.wav」のソースフィルターの出力と、「AVI
+      Mux」<BR>
+      　フィルターの入力（Input02）を接続すると勝手に追加されます。<BR>
+      <BR>
+      <BR>
+      　さて、ここまで来たら後は超簡単です。<BR>
+      　先ほどのビデオの再生と同じように、緑色の再生ボタン（フィルターグラフ実行ボタン）をクリックすると<BR>
+      　変換が始まり、最終的に”TH2OP.avi”という27MBほどのファイルが出来上がります。<BR>
+      <BR>
+      　そして、出来たそのTH2OP.aviをPMF一発変換ツールにドラッグ＆ドロップすれば、めでたくToHeart2の<BR>
+      　OP動画のPMFが生成されます（＾＾<BR>
+      　<BR>
+      <BR>
+      <BR>
+      　<FONT size="+2">お疲れ様でした。</FONT><BR>
+      </TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<HR width="640" align="left">
+<P>2005/07/07　まどか</P>
+</BODY>
+</HTML>

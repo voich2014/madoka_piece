@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>しょうか　Ver.0.5</TITLE>
+<META content="text/html; charset=shift_jis" http-equiv=Content-Type>
+<META content="IBM HomePage Builder 2001 V5.0.0 for Windows" name="GENERATOR">
+<script language="JavaScript" src="../mycount.js"></script>
+</HEAD>
+<BODY>
+<P align=center><B><FONT size="+1">火を消すブロック移動型　パズルゲーム</FONT></B><BR>
+<BR>
+<B><FONT size=+4>しょうか</FONT></B><BR><B><FONT 
+size=+2>Ver.0.5</FONT></B></P>
+<P align=center><B><FONT size="+1">by まどか </FONT>AND<FONT size="+1"> へぼじるし</FONT></B> </P>
+<HR>
+
+<TABLE height=136>
+  <TBODY>
+  <TR>
+    <TD><IMG border="1" height="88" src="Image/syouka_title.jpg" width="128"><BR><BR><FONT size=-1>タイトル画面</FONT></TD>
+    <TD><IMG border="1" height="88" src="Image/syouka_game.jpg" width="128"><BR><BR><FONT size=-1>ゲーム画面</FONT></TD>
+    </TR></TBODY></TABLE>
+<P>※画面のキャプチャには<A href="http://www.marchen.to/~piece/" target=_blank>まかべひろし 
+さん</A>のPceCapsを使用しています<BR></P>
+<TABLE width="100%">
+  <TBODY>
+  <TR>
+    <TD bgColor=#ccccff width="100%"><B><FONT size=+2>　</FONT><FONT 
+      color=#0033ff size=+3>概要</FONT></B></TD></TR></TBODY></TABLE>
+<TABLE width=400>
+  <TBODY>
+  <TR>
+    <TD>このアプリケーションは、火を消す「消火」をテーマとしたP/ECE用のブロック移動型パズルゲームです。<BR>
+      <BR>
+      プレイヤーは主人公の「消太郎（しょうたろう）」となって、水のブロックを放水して移動させ､ステージ内の全ての火ブロックを消火したらステージクリアとなります。<BR>
+      <BR>
+      ステージは全１０面用意してありますが､ソースプログラムも標準で添付してありますので､ユーザが自由にステージを変更・追加することができます。<BR>
+      <BR>
+      また、プロのゲームプログラマさん程ではないですが､いろいろな画面エフェクトのテクニックを盛り込んでいるので､何かの参考になれば光栄です。<BR><BR>
+      ちなみに、この「しょうか」は拙作のMSX用同人ゲーム「The
+      しょうか」をP/ECE用に移植・アレンジしたものです（＾＾；<BR>
+      今回タイトル画面・エンディング画面およびゲーム中BGMは<A href="http://www2.plala.or.jp/madoka/mal/" target="_blank">へぼじるし</A>さんに協力していただきました。</TD></TR></TBODY></TABLE>
+<P><BR></P>
+<TABLE width="100%">
+  <TBODY>
+  <TR>
+    <TD bgColor=#ccccff width="100%"><B><FONT size=+2>　</FONT><FONT 
+      color=#0033ff size=+3>使用方法</FONT></B></TD></TR></TBODY></TABLE>
+<TABLE width=400>
+  <TBODY>
+  <TR>
+    <TD><IMG border="1" height="88" src="Image/syouka_file.jpg" width="128"><BR><BR>
+      PIECEコミュニケータを使って、&quot;syouka.pex&quot;をP/ECEに転送してください。<BR>
+      または、PIECEコミュニケータから&quot;syouka.srf&quot;を実行してください。<BR><BR>
+      すると、クリエイタ名が表示された後、タイトル画面になりますので、STARTボタンでゲームを開始してください。<BR>
+      <BR><BR>
+      <FONT size="+2"><B>＜ルール＞</B></FONT><FONT size="+1"><BR>
+      </FONT>　ゲーム中には3種類の水系ブロックと3種類の火系ブロックが存在し､水系のブロックを放水して移動させ､火系ブロックにぶつけて消火するというルールになっています。<BR>
+      <BR>
+      　ちなみに、ブロックを放水して移動させると、何かにぶつかるまで水系ブロックは移動しつづけます。<BR>
+      　<BR>
+      　以下にブロックの説明を表示します。<BR>
+      　これは、ゲーム画面の一番下にも表示されていますが､小さくてちょっと見づらいので､ここでよく確認してくださいね（＾＾；<BR>
+      　<IMG src="Image/Block_Manual.jpg" width="384" height="27" border="0"><BR>
+      図：ブロック説明<BR><BR>
+      　簡単に説明しますと､左から<B><FONT size="+1">「しずく」・「バケツ」・「消防車」・「タバコの火」・「たき火」・「ビル火災」</FONT></B>となっていて、一応それぞれの頭文字を表示しています。<BR>
+      <BR>
+      　で、左側3つの水系ブロックを右側の火系ブロックにぶつけて消火するわけですが、この消火にも一定のルールがあって、常識的に考えてもらえればよいのですが､「しずく」は「タバコの火」しか消せなくて､「バケツ」だと「タバコの火」も「たき火」も消すことができます。そして、もちろん「消防車」は全ての火系ブロックを消火可能です。<BR>
+      <BR>
+      　これを表にすると以下のようになります。<BR>
+      <TABLE width="310" height="120" bgcolor="#ffff80">
+        <TBODY>
+          <TR>
+            <TD width="58"></TD>
+            <TD align="center" bgcolor="#ff0000" width="88"><FONT color="#FFFFFF"><B>タバコの火</B></FONT></TD>
+            <TD align="center" bgcolor="#ff0000" width="62"><FONT color="#FFFFFF"><B>たき火</B></FONT></TD>
+            <TD align="center" bgcolor="#ff0000" width="74"><FONT color="#FFFFFF"><B>ビル火災</B></FONT></TD>
+          </TR>
+          <TR>
+            <TD align="center" width="58" bgcolor="#0000ff"><FONT color="#FFFFFF"><B>しずく</B></FONT></TD>
+            <TD align="center" bgcolor="#FFFFFF" width="88"><B>○</B></TD>
+            <TD align="center" bgcolor="#FFFFFF" width="62"><B>×</B></TD>
+            <TD align="center" bgcolor="#FFFFFF" width="74"><B>×</B></TD>
+          </TR>
+          <TR>
+            <TD align="center" width="58" bgcolor="#0000ff"><FONT color="#FFFFFF"><B>バケツ</B></FONT></TD>
+            <TD align="center" bgcolor="#FFFFFF" width="88"><B>○</B></TD>
+            <TD align="center" bgcolor="#FFFFFF" width="62"><B>○</B></TD>
+            <TD align="center" bgcolor="#FFFFFF" width="74"><B>×</B></TD>
+          </TR>
+          <TR>
+            <TD align="center" width="58" bgcolor="#0000ff"><FONT color="#FFFFFF"><B>消防車</B></FONT></TD>
+            <TD align="center" bgcolor="#FFFFFF" width="88"><B>○</B></TD>
+            <TD align="center" bgcolor="#FFFFFF" width="62"><B>○</B></TD>
+            <TD align="center" bgcolor="#FFFFFF" width="74"><B>○</B></TD>
+          </TR>
+        </TBODY>
+      </TABLE>
+      表：消火ルール<BR>
+      <BR>
+      　また、同じ水系ブロック同士をぶつけた場合、その水系ブロックはパワーアップします。<BR>
+      <BR>
+      　パワーアップの例）<BR>
+      <BR>
+      　　<FONT size="+2"><B>しずく　＋　しずく　＝　バケツ<BR></B></FONT><BR>
+      　あと、種類の違う水系ブロックや､消火できない火系ブロックにぶつけた場合は､何も起こらずそのままブロックが止まるだけなので､このルールをおぼえておいてくださいね。<BR>
+      <BR>
+      　以上のルールに従って、ステージ内の全ての火系ブロックを消火したら、ステージクリアです。<BR>
+      　ステージは全１０面です。<BR>
+      <BR>
+      <BR>
+      <FONT size="+2"><B>＜ゲーム中の操作＞</B></FONT><BR>
+      　使用するボタンは十字PADとAボタンのみで、操作は以下のとおりになっています。<BR>
+      <BR>
+      　<FONT size="+1"><B>・十字PAD<BR>
+      　　プレイヤーキャラの移動<BR>
+      <BR>
+      　・十字PAD＋Aボタン<BR>
+      　　放水して水ブロックを動かす<BR>
+      </B></FONT>　　　（ブロックを移動させたい方向に<BR>
+      　　　十字PADを押しながらAボタンです）<FONT size="+1"><BR>
+      </FONT>　<BR>
+      <FONT size="+2"><B>＜ギブアップ＞<BR>
+      </B></FONT>　ゲーム中に制限時間は存在しないので､失敗してクリア不可能となったら、STARTボタンを押してギブアップしてください。<BR>
+      　そのステージの最初に戻ります。<BR>
+      <BR>
+      　それでは、がんばって全面クリアを目指してくださいね。</TD></TR></TBODY></TABLE>
+<P><BR></P>
+<TABLE width="100%">
+  <TBODY>
+  <TR>
+    <TD bgColor=#ccccff width="100%"><B><FONT size=+2>　</FONT><FONT 
+      color=#0033ff size=+3>更新履歴</FONT></B></TD></TR></TBODY></TABLE>
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD 
+      width=566>2002/11/05　Ver.0.5　ネット初公開</TD></TR></TBODY></TABLE>
+<P><BR></P>
+<TABLE width="100%">
+  <TBODY>
+  <TR>
+    <TD bgColor=#ccccff width="100%"><B><FONT size=+2>　</FONT><FONT 
+      color=#0033ff size=+3>注意事項</FONT></B></TD></TR></TBODY></TABLE>
+<TABLE width=400>
+  <TBODY>
+  <TR>
+    <TD>このプログラムはフリーソフトウェアです。<BR>著作権は、まどかが保持します。<BR><BR>このプログラムを使用してのいかなる損害に対しても、作者は責任を負いませんので､注意してくださいね。<BR><BR>再配布や、雑誌などへの掲載に関しては、基本的に自由ですが、できれば作者にご一報ください。<BR><BR>まだまだ開発途中の段階なので、バグなどがありましたら、ご連絡ください。<BR><BR>メールはこちらへ↓<BR><A 
+      href="mailto:madoka@olive.plala.or.jp">madoka@olive.plala.or.jp</A><BR><BR>ＨＰ<BR><A 
+      href="http://www2.plala.or.jp/madoka/">まどかの世界</A></TD></TR></TBODY></TABLE></BODY></HTML>

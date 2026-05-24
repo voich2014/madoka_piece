@@ -1,0 +1,383 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<META name="GENERATOR" content="IBM HomePage Builder 2001 V5.0.0 for Windows">
+<TITLE>ＭＭ音楽館　Ver.1.0</TITLE>
+<script language="JavaScript" src="../mycount.js"></script>
+</HEAD>
+<BODY>
+<P align="center"><B><FONT size="+4">ＭＭ音楽館</FONT></B><BR>
+<B><FONT size="+2">Ver.1.0<BR>
+</FONT>(MMCには<A href="../Piece_ele/mmc/mmc.htm" target="_blank">カーネル(Ver.1.28以降)</A>で対応します)</B></P>
+<P align="center"><B><FONT size="+1">by まどか</FONT></B></P>
+<HR>
+<TABLE height="136">
+  <TBODY>
+    <TR>
+      <TD><IMG src="Image/v10gamen1.gif" width="128" height="88" border="1"><BR><BR>
+      <FONT size="-1">初期画面</FONT></TD>
+      <TD><IMG src="Image/v10gamen2.gif" width="128" height="88" border="1"><BR><BR>
+      <FONT size="-1">演奏中画面</FONT></TD>
+      <TD><IMG src="Image/v10gamen3.gif" width="128" height="88" border="1"><BR><BR>
+      <FONT size="-1">設定メニュー</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<TABLE height="136">
+  <TBODY>
+    <TR>
+      <TD><IMG src="Image/v10gamen4.gif" width="128" height="88" border="1"><BR>
+      <BR>
+      <FONT size="-1">ファイル操作メニュー</FONT></TD>
+      <TD><IMG src="Image/v10gamen5.gif" width="128" height="88" border="1"><BR>
+      <BR>
+      <FONT size="-1">ファイル受信中画面</FONT></TD>
+      <TD><IMG src="Image/v10gamen6.gif" width="128" height="88" border="1"><BR>
+      <BR>
+      <FONT size="-1">ファイル送信中画面</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<TABLE height="136">
+  <TBODY>
+    <TR>
+      <TD><IMG src="Image/v10gamen7.gif" width="128" height="88" border="1"><BR>
+      <BR>
+      <FONT size="-1">ファイル検索中</FONT></TD>
+      <TD width="130"><IMG src="Image/v10gamen8.gif" width="128" height="88" border="1"><BR>
+      <BR>
+      <FONT size="-1">通常ファイル表示中</FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P>※画面のキャプチャには<A href="http://www.marchen.to/~piece/" target="_blank">まかべひろしさん</A>のPceCapsを使用しています<BR></P><TABLE width="100%">
+  <TBODY>
+    <TR>
+      <TD width="100%" bgcolor="#CCCCFF"><B><FONT size="+2">　</FONT><FONT size="+3" color="#0033FF">概要</FONT></B></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<TABLE width="400">
+  <TBODY>
+    <TR>
+      <TD>このアプリケーションは、フリーのMML演奏プログラムです。<BR>
+      バイナリ化されたMMLファイルを選択して演奏させることができる、いわゆる携帯MusicPlayerです。<BR>
+      <BR>
+      旧き良き時代のMMLブーム（？）をP/ECEでもう一度！　という願いを込めて作りました。どんどんMMLで曲を作ってくださいね（＾o＾)/<BR>
+      <BR>
+      muccが吐き出す拡張子.pmdのバイナリファイルに対応しています。<BR>
+      連続演奏が可能で、無限ループ指定の曲も一定時間でフェードアウトし､次の曲に自動的に進みます。<BR>
+      <BR>
+      また、P/ECE付属のFilePack.exeで*.pmdファイルをパックした、*.fpkファイルにも対応していますので、大量に*.pmdがある場合は、パックするとフラッシュメモリを有効に使えて便利です。<BR>
+      <BR>
+      さらに、ファイル操作メニューから、音楽データファイルの赤外線通信とファイルの削除が行えるので､パソコンが無くてもP/ECE間での音楽ファイルのやり取りが出来て､まさにモバイル！（＾＾；<BR>
+      <BR>
+      設定メニューで、通常ファイル表示をONにすれば、音楽データファイル以外のファイルも赤外線通信で送ったりできます。<BR>
+      <BR>
+      その他、ボリュームコントロール機能や､画面の表示をカットする簡易省電力モードもあります。<BR><BR>
+      <B>2004/10/07追記</B><BR>
+      拙作の<A href="../Piece_ele/mmc/mmc.htm" target="_blank">MMC対応カーネル</A>を利用して、MM音楽館をMMC/SDカードに対応させました（＾＾　微妙に操作性もUPしてます。<BR>
+      <B>2005/04/24追記</B><BR>
+      MMC対応カーネルVer.1.28からカーネル側でMMCに対応するようになったので、アプリ側でのMMC対応部分を削除し、同じpexで標準P/ECEとMMC改造P/ECEのどちらでも動作する統合版になりました。<BR>
+      <BR>
+      <BR>
+      このMM音楽館をpmdやfpkと一緒にMMCの中に入れておけば、フラッシュメモリの容量を気にすることなく、たくさんの音楽を楽しむことができます（＾＾　（MMCメニューアプリは必要ですけどね）<BR>
+      <BR>
+      ちなみに、MMC上のファイルを削除することはできない＆MMCを使えば容量を気にすることがなくなるので、以前のVer.にあった「ファイル削除」機能はなくなりました。</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P><BR>
+</P>
+<TABLE width="100%">
+  <TBODY>
+    <TR>
+      <TD width="100%" bgcolor="#CCCCFF"><B><FONT size="+2">　</FONT><FONT size="+3" color="#0033FF">使用方法</FONT></B></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<TABLE width="400">
+  <TBODY>
+    <TR>
+      <TD><IMG src="Image/v10gamen9.gif" width="128" height="88" border="1"><BR>
+      <BR>
+      PIECEコミュニケータを使って、&quot;mmmh.pex&quot;をP/ECEに転送してください。<BR><BR>
+      <IMG src="Image/v10gamen1.gif" width="128" height="88" border="1"><BR><BR>
+      起動すると、フラッシュメモリおよび、接続されているMMC/SDカード内の.pmdファイルを検索して、リストとして表示します。（カーネルのMMC/SD機能をONとしている場合）<BR>
+      右に表示されている数字はファイルサイズです。<BR><BR>
+      十字ＰＡＤでカーソル(♪)を操作し、演奏させたいファイルを選択します。<BR>
+      そして、<FONT size="+2" color="#FF3366"><B>Ａボタンで演奏の開始・停止</B></FONT>を行います。<BR>
+      <BR>
+      <IMG src="Image/v10gamen2.gif" width="128" height="88" border="1"><BR><BR>
+      演奏中は、MMLファイルに埋め込まれている曲情報と、ファイル名、演奏時間を表示します。<BR>
+      曲情報が画面に入りきらない場合は､演奏開始５秒後からスクロールして表示します。<BR>
+      <BR>
+      画面左下に表示されているのは、フラッシュメモリの残り容量で、右下にはファイルリストのページ数が表示されます。<BR>
+      （MMC/SDの残り容量は表示されません）<BR>
+      <BR>
+      十字PADの左右でページ単位のカーソル移動が出来ます。<BR>
+      <BR>
+      <IMG src="Image/v10gamen3.gif" width="128" height="88" border="1"><BR>
+      <BR>
+      STARTボタンを押すと、設定メニュー画面になります。<BR>
+      十字PADの上下で項目を選択し、十字PADの左右で設定値を変更します。<BR>
+      再びSTARTボタンを押すか、Aボタンを押すことで、通常画面に復帰します。<BR>
+      <BR>
+      設定項目の意味は以下のとおりです。<BR>
+      <BR>
+      <B><FONT size="+1">[ループ期間]</FONT></B><BR>
+      　MMLで無限ループ指定となっている曲を、指定時間でフェードアウトさせるときの演奏時間を設定します。単位は秒です。<BR>
+      　指定の時間分演奏した後、５秒間でフェードアウトし､次の曲に進みます。<BR>
+      　なお、このループ期間は、下記の[無限ループ]がOFFになっていないと、効果がありません。<BR>
+      <BR>
+      <B><FONT size="+1">[無限ループ]</FONT></B><BR>
+      　MMLの無限ループ指定を有効化するかどうかを設定します。<BR>
+      　この設定値がONで無限ループ指定の曲の場合、延々とその曲を演奏し続けます。<BR>
+      　<BR>
+      <B><FONT size="+1">[ボリューム]</FONT></B><BR>
+      　スピーカの音量を調節します。<BR>
+      　ここで設定する音量は、MM音楽館内でMMLを演奏させる時のみに有効な音量です。<BR>
+      　MM音楽館を終了すると、システムメニューで設定した音量に戻ります。<BR>
+      <BR>
+      <B><FONT size="+1">[通常ファイル表示]</FONT></B><BR>
+      　音楽データファイル以外のファイルをリストに表示するかどうかを選択します。<BR>
+      　通常ファイルの表示をONにした場合､ファイルパックは１つのデータファイルとして扱われます。このモードは、フラッシュメモリおよびMMC/SDカード内の内容を確認する時に便利です。<BR>
+      　また、通常ファイル表示時は、通常ファイルに対して、赤外線通信も音楽データファイル同様に使用可能です。<BR>
+      <BR>
+      <BR>
+      <IMG src="Image/v10gamen4.gif" width="128" height="88" border="1"><BR><BR>
+      SELECTボタンを押すと、ファイル操作メニュー画面になります。<BR>
+      十字PADの上下で項目を選択し、Aボタンで決定、Bボタンで通常画面に戻ります。<BR>
+      再びSELECTボタンを押すことでも、通常画面に復帰します。<BR>
+      <BR>
+      メニュー項目の意味は以下のとおりです。<BR><BR>
+      <B><FONT size="+1">[赤外線でファイル受信]</FONT></B><BR>
+      　P/ECEの赤外線通信機能を利用して、ファイルを受信します。<BR>
+      　通信速度は４２バイト/秒程なので、気長に待ってくださいね（＾＾；<BR>
+      　受信中は､Aボタンで強制通信リセットになり、Bボタンで通信を強制終了します。<BR>
+      <BR>
+      <B><FONT size="+1">[赤外線でファイル送信]</FONT></B><BR>
+      　P/ECEの赤外線通信機能を利用して、ファイルを送信します。<BR>
+      　選択した音楽データがファイルパック内にある場合、ファイルパックごと送信するか､その<B>ファイルをファイルパックから抜き出して</B>、単体ファイルとして送るかを選択することが出来ます。<BR>
+      　送信中は､Aボタンで強制通信リセットになり、Bボタンで通信を強制終了します。<BR>
+      <BR>
+      <B><FONT size="+1">[アプリを終了する]</FONT></B><BR>
+      　MM音楽館を終了します。<BR>
+      <BR>
+      この他、Bボタンを押すことで、画面の表示をカットし電池の消費を少し軽減させる、簡易省電力モードに移行することが出来ます。<BR>
+      省電力モード中も操作は可能となっています。<BR>
+      再びBボタンを押すことで､復帰することができます。</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P><BR>
+</P>
+<TABLE width="100%">
+  <TBODY>
+    <TR>
+      <TD width="100%" bgcolor="#CCCCFF"><B><FONT size="+2">　</FONT><FONT size="+3" color="#0033FF">音楽ファイルの作り方</FONT></B></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<TABLE width="400">
+  <TBODY>
+    <TR>
+      <TD>この「MM音楽館」でMMLの音楽データを演奏させるには､MMLファイルをバイナリファイルにコンバートする必要があります。<BR>
+      <BR>
+      コンバートの方法には２種類あり、１つ目はP/ECE標準のMML→.cコンバータであるMUCC.exeを使ってバイナリ化する方法で、２つ目は、MUCCでプログラム中に取り込める.cファイルにコンバートしたものを拙作のC2Binary.exeでバイナリファイルにコンバートする方法です。<BR>
+      <BR>
+      まずは、１つ目の方法。<BR>
+      これからMMLを作る人は、こっちの方法が便利です。<BR>
+      <BR>
+      <B><FONT size="+2">１．</FONT></B>MML形式で曲を打ち込みます。<BR>
+      <BR>
+      <B><FONT size="+2">２．</FONT></B>コマンドプロンプトから以下のようにしてMMLファイルをコンバートします。<BR>
+      <BR>
+      　<B>&gt;mucc sample.mml sample.pmd</B><BR>
+      <BR>
+      　P/ECEのチュートリアルでは、プログラム中で取り込むため、出力ファイルの拡張子を.cとしていますが、これを.pmdとして実行すると、バイナリファイルとして出力されます。<BR>
+      <BR>
+      <B><FONT size="+2">３．</FONT></B>できた*.pmdファイルをP/ECEに転送してください。<BR>
+      <BR>
+      次に、もうひとつの方法。<BR>
+      これは、すでにMMLファイルを.cファイルにいろいろコンバートしてしまった人や､一気にコンバートしたい人向けです。<BR>
+      <BR>
+      <FONT size="+2"><B>１．</B></FONT>チュートリアルにあるやり方で、MMLファイルをテキスト形式の.Cファイルにコンバートします。<BR>
+      <BR>
+      <B><FONT size="+2">２．</FONT></B>出力された*.cファイルをC2Binary.exeにドラッグ＆ドロップしてください。<BR>
+      <BR>
+      <FONT size="+2"><B>３．</B></FONT>同名の.pmdファイルが元のファイルと同じディレクトリに出力されます。<BR>
+      　連続変換に対応しているので、複数のファイルをまとめてドラッグ＆ドロップすることで、一気にコンバートできます。<BR>
+      <BR>
+      　簡易コンバートプログラムなので、エラーチェックは行いません。注意してください。<BR>
+      <BR>
+      （注）P/ECEに転送するファイルのファイル名は全て小文字にして下さい。</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P><BR>
+</P>
+<TABLE width="100%">
+  <TBODY>
+    <TR>
+      <TD width="100%" bgcolor="#CCCCFF"><B><FONT size="+2">　</FONT><FONT size="+3" color="#0033FF">赤外線通信のコツ</FONT></B></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<TABLE width="400">
+  <TBODY>
+    <TR>
+      <TD>　はい、「MM音楽館Ver.0.7」から音楽データファイルの赤外線通信転送が可能になりました。<BR>
+      　これで、パソコンを経由しなくても、P/ECEを持っているだけで、お気に入りの音楽データを交換することができます。仲間同士で集まったときに、これで自分の自信作などを配布できるんですよ（＾o＾）/　気に入った曲を送って貰ってもいいですね。<BR>
+      <BR>
+      　それでは、赤外線通信のコツを紹介します。<BR>
+      <BR>
+      　<IMG src="Image/ird_1.jpg" width="320" height="240" border="0"><BR>
+      　<BR>
+      　赤外線通信をするときは、写真のように机の上に置いてやると楽です。もちろん手で持ってやってもちゃんと通信できるのですが、赤外線の通信速度は遅く、１キロバイトのファイルを転送するのに、約１分（エラー回復時間も含めて）かかりますので､持っていると疲れます（＾＾；<BR>
+      <BR>
+      　<IMG src="Image/ird_2.jpg" width="320" height="240" border="0"><BR>
+      <BR>
+      　また、P/ECE間の距離は約１ｃｍくらいがちょうど良いようです。４ｃｍくらい離しても通信はできますが、１ｃｍくらいがタイミングを合わせるのに都合が良いみたいです。<BR>
+      <BR>
+      　もし、通信が上手くいかない場合は、P/ECE間の距離を変えたり、Ａボタンで強制的に通信をやり直したりしてください。<BR>
+      <BR>
+      　通信の手順としては以下のようになります。<BR>
+      <BR>
+      <B><FONT size="+2">１．</FONT></B>送信側で送信するファイルにカーソルを合わせて、SELECTボタンで表示されるメニューで「赤外線でファイル送信」を選んでください。<BR>
+      <BR>
+      <B><FONT size="+2">２．</FONT></B>受信側は、メニューの「赤外線でファイル受信」を選んでくださいね。<BR>
+      <BR>
+      <B><FONT size="+2">３．</FONT></B>各メニューの「○○を送信（受信）を開始します」という問い合わせ画面から、Aボタンを押すと、通信が開始されるのですが､<B><FONT size="+1">受信側から通信を開始</FONT></B>すると比較的上手くいきます。<BR>
+      <BR>
+      <B><FONT size="+2">４．</FONT></B>あとは通信が完了するのを待ってください。通信中は受信の成功を知らせるビープ音が鳴りますので、「テッコテッコテッコ……」というリズムを楽しみながら通信完了を待ちましょう（＾＾；<BR>
+      <BR>
+      <BR>
+      　赤外線通信ではエラーの発生率が高く、結構通信に失敗しますが、失敗した場合自動的に通信をリカバリし、ファイルのデータの<FONT size="+1" color="#FF3300"><B>途中から通信を再開するレジューム機能</B></FONT>も備えておりますので、サイズの大きなファイルも気長に待ては、ちゃんと送信できます（＾＾；</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P><BR>
+</P>
+<TABLE width="100%">
+  <TBODY>
+    <TR>
+      <TD width="100%" bgcolor="#CCCCFF"><B><FONT size="+2">　</FONT><FONT size="+3" color="#0033FF">更新履歴</FONT></B></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<TABLE>
+  <TBODY>
+    <TR>
+      <TD width="82" valign="top">2001/12/27</TD>
+      <TD width="68" valign="top">Ver.0.5</TD>
+      <TD width="356">ネット初公開。<BR>
+      </TD>
+    </TR>
+    <TR>
+      <TD width="82" valign="top">2002/01/03</TD>
+      <TD width="68" valign="top">Ver.0.6</TD>
+      <TD width="356">FilePack.exeによる*.fpkファイルに対応長いタイトル文字列をスクロールさせて表示フェードアウトで音量が変わってしまうバグを修正。<BR>
+      </TD>
+    </TR>
+    <TR>
+      <TD width="82" valign="top">2002/01/03</TD>
+      <TD width="68" valign="top">Ver.0.61</TD>
+      <TD width="356">ページ数の計算にバグがあったのを修正。<BR>
+      </TD>
+    </TR>
+    <TR>
+      <TD width="82" valign="top">2002/01/05</TD>
+      <TD width="68" valign="top">Ver.0.63</TD>
+      <TD width="356">システムメニューから戻ったときに音量が変わってしまうバグを修正。<BR>
+      ファイルが複数のセクタに分割して配置されている場合に上手く再生されないバグを修正。<BR>
+      </TD>
+    </TR>
+    <TR>
+      <TD width="82" valign="top">2002/01/19</TD>
+      <TD width="68" valign="top">Ver.0.7</TD>
+      <TD width="356">赤外線通信とファイル削除機能を追加。<BR>
+      </TD>
+    </TR>
+    <TR>
+      <TD width="82" valign="top">2002/01/24</TD>
+      <TD width="68" valign="top">Ver.0.8</TD>
+      <TD width="356">通常ファイル表示モードを追加。<BR>
+      カーソルがアニメーションするように変更。<BR>
+      </TD>
+    </TR>
+    <TR>
+      <TD width="82" valign="top">2002/01/25</TD>
+      <TD width="68" valign="top">Ver.0.81</TD>
+      <TD width="356">P/ECEカーネルのアップデートに伴う修正。<BR>
+      ファイルがひとつも無い場合に赤外線受信ができないバグとページ表示がおかしいバグを修正。<BR>
+      赤外線通信でファイルを上書きした場合、おかしくなる場合があるバグを修正。<BR>
+      赤外線通信ＡＰＩの速度が変わったので､カーネルVer.1.18以降専用になりました　通信速度比1.5倍くらい。<BR>
+      </TD>
+    </TR>
+    <TR>
+      <TD width="82" valign="top">2002/01/26</TD>
+      <TD width="68" valign="top">Ver.0.85</TD>
+      <TD width="356">PieceSystemVer.1.18現在の音楽ドライバでは、曲の演奏開始時にデチューンの初期化がされていないバグへの対策を施しました　（情報提供：<A href="http://isweb40.infoseek.co.jp/computer/hara_yan/" target="_blank">はらやん様</A>）。<BR>
+      FilePack.exeでは大文字のファイル名が許されてしまうので､赤外線通信でファイルを受け取った場合、小文字に変換して保存するように修正。<BR>
+      ソースのコメント間違いなどを修正。<BR>
+      </TD>
+    </TR>
+    <TR>
+      <TD width="82" valign="top">2002/01/31</TD>
+      <TD width="68" valign="top">Ver.0.86</TD>
+      <TD width="356">ビブラートのパラメータも演奏開始時に初期化されていないことを発見したので､対応。<BR>
+      赤外線通信時の受信エラー表示を廃止。<BR>
+      あんまり意味無いので（＾＾；<BR>
+      </TD>
+    </TR>
+    <TR>
+      <TD width="82" valign="top">2004/10/07</TD>
+      <TD width="68" valign="top">Ver.0.9</TD>
+      <TD width="356">2年以上の歳月を経て、MM音楽館はついにMMCへ対応致しました（＾＾<BR>
+      基本的にはVer.0.86までのものと変わりませんが、微妙に操作感がアップしています。<BR>
+      <B><STRIKE><FONT color="#FF3300">MMC対応カーネルVer.1.23以降専用</FONT></STRIKE></B>です。<BR>
+      </TD>
+    </TR>
+    <TR>
+      <TD width="82" valign="top">2005/04/24 　<BR>
+      </TD>
+      <TD width="68" valign="top">Ver.1.0</TD>
+      <TD width="356"><A href="../Piece_ele/mmc/mmc.htm" target="_blank">MMC対応カーネル</A>Ver.1.28からカーネル側でMMCをサポー トするようになりましたので、通常版とMMC対応版を統合してVer.1.0のリリースとしました。<BR>
+      Ver.1.0では、統合の他、タイトル文字列が無いpmdを演奏する時に、タイトル文字列部分が消去されていなかったバグの修正と、ようやく<A href="http://www8.plala.or.jp/randomism/" target="_blank">Randomistさん</A>の「<A href="http://www8.plala.or.jp/randomism/piece/instdef2/" target="_blank">ドラム音色分離キット</A>」に対応しました（＾＾；<BR>
+      </TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<P><BR>
+</P>
+<TABLE width="100%">
+  <TBODY>
+    <TR>
+      <TD width="100%" bgcolor="#CCCCFF"><B><FONT size="+2">　</FONT><FONT size="+3" color="#0033FF">注意事項</FONT></B></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<TABLE width="400">
+  <TBODY>
+    <TR>
+      <TD>このプログラムはフリーソフトウェアです。<BR>
+      著作権は、まどかが保持します。<BR>
+      <BR>
+      このプログラムを使用してのいかなる損害に対しても、作者は責任を負いませんので､注意してくださいね。<BR>
+      <BR>
+      再配布や、雑誌などへの掲載に関しては、基本的に自由ですが、できれば作者にご一報ください。<BR>
+      <BR>
+      まだまだ開発途中の段階なので、バグなどがありましたら、ご連絡ください。<BR><BR>
+      メールはこちらへ↓<BR>
+      <A href="mailto:madoka@olive.plala.or.jp">madoka@olive.plala.or.jp</A><BR><BR>
+      ＨＰ<BR>
+      <A href="http://www2.plala.or.jp/madoka/">まどかの世界</A><BR>
+      <A href="piece.htm">まどかのP/ECE</A><BR>
+      <A href="../Piece_ele/piece_ele.htm">まどかのP/ECEではじめる電子工作</A></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+</BODY>
+</HTML>

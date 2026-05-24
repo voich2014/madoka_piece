@@ -1,0 +1,360 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<META name="GENERATOR" content="IBM HomePage Builder 2001 V5.0.0 for Windows">
+<TITLE>Pieceで動画プレイヤー</TITLE>
+<SCRIPT language="JavaScript" src="../../mycount.js"></SCRIPT>
+</HEAD>
+<BODY>
+<P align="center"><IMG src="pmf_page_logo.gif" width="516" height="365" border="0"></P>
+<HR>
+<TABLE width="100%" bgcolor="#8e94fd">
+  <TBODY>
+    <TR>
+      <TD width="640"><B><FONT color="#FFFFFF" size="+1">　更新履歴</FONT></B></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<TABLE width="70%">
+  <TBODY>
+    <TR>
+      <TD align="left" valign="top" width="84" height="18">2005/02/26</TD>
+      <TD valign="top" height="18" width="100"><FONT face="ＭＳ ゴシック">(P)Ver.1.00<BR>
+      (W)Ver.1.0<BR>
+      </FONT></TD>
+      <TD valign="top" height="18" width="374">初公開<BR><BR>
+      </TD>
+    </TR>
+    <TR>
+      <TD height="46" valign="top">2005/03/06</TD>
+      <TD height="46" width="107" valign="top"><FONT face="ＭＳ ゴシック" color="#FF0000">(P)Ver.1.01<BR>
+      (W)Ver.1.1</FONT></TD>
+      <TD height="46" width="374" valign="top">P/ECE側プレイヤーのシステムメニュー復帰後にリスト画面が乱れる不具合を修正しました。<BR>
+      この不具合は、初公開直前のマニュアル書いてる時に気付いて、誰かに指摘されるまで放置しておこうと思っていましたが、早速<A href="http://piece.no-ip.org/" target="_blank">nsawaさん</A>にご指摘頂いたので、直しました（＾＾；<BR>
+      <BR>
+      PMF_Convertorにお試し変換機能を含む、出力オプションを追加しました。これで、5秒とかの短い時間で変換する範囲が指定できます。<BR>
+      MMC非改造P/ECE向けの機能ですので、是非ご活用ください。<BR>
+      <BR>
+      </TD>
+    </TR>
+    <TR>
+      <TD valign="top">2005/03/20</TD>
+      <TD valign="top"><FONT face="ＭＳ ゴシック" color="#FF0000">(P)Ver.1.02</FONT><FONT face="ＭＳ ゴシック"><BR>
+      (W)Ver.1.1 </FONT></TD>
+      <TD valign="top" width="374">PMFプレイヤーのMMCライブラリを512MB以上1GB以内のメモリカードに対応させました。恐らく2GBのSDカードにも対応しますが、検証できないので、1GBまでとします。<BR><BR>
+      ※UPする時間が取れなかったため、実際に公開したのは03/30です。（＾＾；<BR>
+      　実は、mmcFileReadSctを使っていないアプリ（MP3プレイヤーとか、nsawaさんのMMC/SDカードリーダーライターとか）は、すでに1GBまで対応してたことが判明（汗）<BR>
+      <BR>
+      </TD>
+    </TR>
+    <TR>
+      <TD valign="top">2005/04/03</TD>
+      <TD valign="top"><FONT face="ＭＳ ゴシック" color="#FF0000">(P)Ver.1.03</FONT><FONT face="ＭＳ ゴシック"><BR>
+      (W)Ver.1.1 </FONT></TD>
+      <TD valign="top" width="374">PMFプレイヤーをMMCカーネルVer.1.27に対応させました。<BR>
+      また、MMCライブラリのソースをMMCカーネルのものと共通化しました。<BR>
+      <BR>
+      </TD>
+    </TR>
+    <TR>
+      <TD valign="top">2005/04/09</TD>
+      <TD valign="top"><FONT face="ＭＳ ゴシック" color="#000000">(P)Ver.1.03</FONT><FONT face="ＭＳ ゴシック" color="#FF0000"><BR>
+      (W)Ver.1.2</FONT></TD>
+      <TD valign="top" width="374">PMF_Convertor.exeがWin98系で起動できない(スタックエラーになる)不具合を修正しました。<BR><BR>
+      </TD>
+    </TR>
+    <TR>
+      <TD valign="top">2005/05/04</TD>
+      <TD valign="top"><FONT face="ＭＳ ゴシック" color="#FF0000">(P)Ver.1.04</FONT><FONT face="ＭＳ ゴシック"><BR>
+      (W)Ver.1.2</FONT></TD>
+      <TD valign="top" width="374">MMCライブラリをMMC版MP3プレイヤーとMMC対応カーネルVer.1.29bとこのPMFプレイヤーでソースを統合しました。<BR>
+      これにより、MMC対応カーネルやMMC版MP3プレイヤーでの不具合への対応もPMFプレイヤーに反映されました。<BR>
+      機能的にはほとんど変化はありませんし、Windows側の一発変換ツールも前回Ver.UP時と同じモノです（＾＾；<BR><BR>
+      <B>2005/05/05 追記</B><BR><STRIKE>
+      今のMMCライブラリでは、64MBのカードで1つのファイルサイズが50MB以上のPMFが再生できないという不具合があります。<BR>
+      この問題は次回Ver.UPで対応する予定です。あらかじめ御了承ください。</STRIKE><BR>
+      <B>2005/05/07 追記</B><BR>
+      Ver.1.05でこの不具合は修正されました。<BR>
+      <BR>
+      </TD>
+    </TR>
+    <TR>
+      <TD valign="top">2005/05/07</TD>
+      <TD valign="top"><FONT face="ＭＳ ゴシック" color="#FF0000">(P)Ver.1.05</FONT><FONT face="ＭＳ ゴシック"><BR>
+      (W)Ver.1.2</FONT></TD>
+      <TD valign="top" width="374">PMFプレイヤーのMMCライブラリを更新しました。<BR>
+      扱う最大ファイルサイズがカード容量を超える場合に、最大ファイルサイズをカード容量のサイズに切り詰めるように修正しました。<BR>
+      これにより、64MBのカードで50MB以上のファイルが扱えなかった不具合が修正されました。<BR>
+      <BR>
+      </TD>
+    </TR>
+    <TR>
+      <TD valign="top">2005/06/14</TD>
+      <TD valign="top"><FONT face="ＭＳ ゴシック" color="#FF0000">(P)Ver.1.10</FONT><FONT face="ＭＳ ゴシック" color="#FF0000"><BR>
+      (W)Ver.1.3</FONT></TD>
+      <TD valign="top" width="374">ついに再生中の早送り・巻き戻しができるようになりました（＾o＾<BR>
+      再生中に十字PADの左右で、約15秒単位ずつ自由に再生位置を移動できます。<BR>
+      この機能を利用するには今回同時にリリースしたPMF_Convertor
+      Ver.1.3以降でPMF2形式のPMFファイルを作ってください。<BR>
+      <BR>
+      従来のコンバータで出力したPMF1形式のPMFファイルではシーク機能が利用できませんので、誠にお手数をお掛け致しますが、再度変換しなおしてください。<BR>
+      <BR>
+      </TD>
+    </TR>
+    <TR>
+      <TD valign="top">2005/07/09</TD>
+      <TD valign="top"><FONT face="ＭＳ ゴシック" color="#FF0000">(P)Ver.1.11</FONT><FONT face="ＭＳ ゴシック" color="#FF0000"><BR>
+      (W)Ver.1.4</FONT></TD>
+      <TD valign="top" width="374">MMCライブラリのVer.UP(PMFプレイヤー専用のUpdate)
+      により、扱える最大ファイルサイズが大容量(128MB以上)
+      のカードに限り、カードのほぼ最大容量までになりました。これにより、1GBのカードだと1ファイル最大<B><FONT size="+1">約4.5時間</FONT></B>（960ＭＢ）もの長時間再生が可能に（なったと思います（＾＾；
+      さすがにまだ4.5時間は未確認。でも、512ＭＢのminiSDで風の谷のナウシカは見れたよ（嬉）)。<BR>
+      <BR>
+      あと、MMCライブラリのmmcFileReadSctとmmcFilreReadMMCSctでファイルサイズを超えてアクセスした時のチェックが上手く動いていなかった不具合も修正しました。これにより、MMC対応カーネルやMMC対応MP3プレイヤーも更新対象になります。<BR><BR>
+      今回はPMF_Convertor側でも、画像変換時に余計にデータを書き込んでしまっていた不具合を修正し、機能自体はまったく変わりはありませんが、Ver.1.4となりました。<BR>
+      <BR>
+      </TD>
+    </TR>
+    <TR>
+      <TD valign="top">2005/08/08</TD>
+      <TD valign="top"><FONT face="ＭＳ ゴシック" color="#FF0000">(P)Ver.1.12</FONT><FONT face="ＭＳ ゴシック" color="#FF0000"><BR>
+      (W)Ver.1.5</FONT></TD>
+      <TD valign="top" width="374">今回のVer.UP（っていうかバグフィックス）の目玉は、PMF_Convertorでグレイスケール変換時の色の取り方が間違っていたのを修正した点です。<BR>
+      情けない話ですが、グレイスケールに見えて実は今まで全然グレイスケールじゃなかったんです（汗<BR>
+      　で、今回の修正で正しいグレイスケールになり、輝度も正しく出るようになったので、後述する追加出力オプションの「自動コントラスト調整」と「ガンマ補正(0.85固定)」はあまり意味がなくなってしまいました。<BR>
+      <BR>
+      　ですが、せっかく作ったんだし、動画によっては効果が出る場合もあるので、そのまま残しておくことにします。<BR>
+      　というわけで、今回は上記の不具合修正のほかに、PMF変換時に画像にちょっとした輝度変換を加える出力オプションを追加しました。<BR>
+      　追加されたオプションは「自動コントラスト調整」と「ガンマ補正(0.85固定)」の2種類です。この2つのオプションの効果はこちらの<A href="../../nikki/nikki0192.html#CONTRAST_GAMMA" target="_blank">日記</A>を参照してください。<BR>
+      　<BR>
+      　このほか、今回のVer.からPMF_Convertorに変換中の進行状況を示すプログレスバーが表示されるようになりました（＾＾<BR>
+      <BR>
+      　あと、PMFプレイヤーの方でPMF2形式の動画データ終端チェックが間違っていた不具合を修正したのと、この修正に伴ないオマケのPMF_Previewerでも同様の不具合を修正しました。これにより、PMF_PreviewerでPMF2形式のファイルを再生した場合に、最後の部分で強制終了してしまう不具合も解消されました。<BR><BR>
+      　</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<BR>
+<TABLE width="100%" bgcolor="#8e94fd">
+  <TBODY>
+    <TR>
+      <TD width="640"><B><FONT color="#FFFFFF" size="+1">　</FONT></B><FONT color="#FFFFFF" size="+1"><B>こんなことできます</B></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<TABLE height="124" width="720">
+  <TBODY>
+    <TR>
+      <TD width="555">
+      <TABLE>
+        <TBODY>
+          <TR>
+            <TD valign="top"><IMG src="p_lis017.gif" width="12" height="12" border="0"></TD>
+            <TD width="688">DirectShow対応の一発変換ツールで、様々なフォーマットの動画ファイルから、専用フォーマットのP/ECE用動画ファイル（PMFファイル）を作成できます。<BR>
+            　（MediaPlayerで再生できる動画（コーデックがインストールされている）が変換可能です）<BR>
+            　お手持ちの動画ファイルをツールにドラッグ＆ドロップするだけの簡単操作。<BR>
+            　コーデックがインストールされていれば、AVI/MPEG/WMV/DivX/rm/qt/movなどから全自動で変換可能です（＾＾<BR>
+            <BR>
+            </TD>
+          </TR>
+          <TR>
+            <TD valign="top"><IMG src="p_lis017.gif" width="12" height="12" border="0"></TD>
+            <TD width="688">MMC/SDカード利用(<A href="../mmc/mmc.htm" target="_blank">要 拡張端子改造＆接続基板</A>)により1ファイルにつき、最大115MB（約30分）の動画ファイル（PMF）を扱えます。<BR>
+            MMC改造をしていないP/ECEでもお楽しみいただけます。<BR>
+            詳しくは<A href="#NO_MMC">こちら</A>へ。<BR>
+            <BR>
+            <FONT color="#0000FF">※2005/07/09 追記</FONT><BR>
+            PMFプレイヤーVer.1.11から大容量(128MB以上）のカードに限り、扱える1ファイルの最大サイズが、カードのほぼ最大容量までとなりました。これにより、1GBのカードの場合、1ファイルで<B><FONT size="+1">最大約4.5時間</FONT></B>もの長時間再生が可能になりました。<BR>
+            （4.5時間のファイルはさずがにまだ未確認ですが（＾＾；）<BR>
+            これで、カードに入るサイズのPMFファイルはほぼ全て再生できるようになったと思います。<BR>
+            <BR>
+            </TD>
+          </TR>
+          <TR>
+            <TD valign="top"><IMG src="p_lis017.gif" width="12" height="12" border="0"></TD>
+            <TD width="688">13階調＆誤差拡散表示で動画ファイルの画像をP/ECEで再現。<BR>
+            <BR>
+            </TD>
+          </TR>
+          <TR>
+            <TD valign="top"><IMG src="p_lis017.gif" width="12" height="12" border="0"></TD>
+            <TD width="688">ADPCMでの音声も映像と同時に再生してます。<BR>
+            <BR>
+            </TD>
+          </TR>
+          <TR>
+            <TD valign="top"><IMG src="p_lis017.gif" width="12" height="12" border="0"></TD>
+            <TD width="688">15fpsのなめらか表示で、アニメやテレビ番組も普通に見えます。PVだってバッチリです（＾＾<BR>
+            　（4回に分けての多階調表示なので、実際は60fpsで表示しています）<BR>
+            <BR>
+            </TD>
+          </TR>
+          <TR>
+            <TD valign="top"><IMG src="p_lis017.gif" width="12" height="12" border="0"></TD>
+            <TD>早送り・巻き戻しもできます（＾＾<BR>
+            （約15秒単位のキーフレーム移動）<BR>
+            <BR>
+            </TD>
+          </TR>
+          <TR>
+            <TD valign="top"><IMG src="p_lis017.gif" width="12" height="12" border="0"></TD>
+            <TD width="688">ちなみにPMFとは<B><FONT size="+1">P</FONT></B>/ECE <FONT size="+1"><B>M</B></FONT>ovie <FONT size="+1"><B>F</B></FONT>ile formatの略です。<BR>
+            <BR>
+            </TD>
+          </TR>
+          <TR>
+            <TD valign="top"><IMG src="p_lis017.gif" width="12" height="12" border="0" align="top"></TD>
+            <TD>1GBまでのMMC/SDカードに対応していますので、たくさんの動画をMMC/SDカードで持ち歩くことができます。<BR>
+            <BR>
+            </TD>
+          </TR>
+          <TR>
+            <TD valign="top"><IMG src="p_lis017.gif" width="12" height="12" border="0" align="top"></TD>
+            <TD valign="top">出力オプションとして「自動コントラスト調整」と「ガンマ補正（0.85固定）」が選択できます。<BR>
+            これらのオプションの効果の詳細はこちらの<A href="../../nikki/nikki0192.html#CONTRAST_GAMMA" target="_blank">日記</A>を参照ください。<BR>
+            <BR>
+            ただし、「自動コントラスト調整」は、ブラックアウトやホワイトアウトのような徐々に明るさが変化する映像に対しては、現段階では上手く対応できていないことをあらかじめ御了承くださいm(_
+            _)m<BR>
+            <BR>
+            </TD>
+          </TR>
+        </TBODY>
+      </TABLE>
+      <BR>
+      </TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<TABLE width="100%" bgcolor="#8e94fd">
+  <TBODY>
+    <TR>
+      <TD width="640"><B><FONT color="#FFFFFF" size="+1">　</FONT></B><A name="DL"><B><FONT color="#FFFFFF" size="+1">早速ですが、バイナリ＆ソースの公開です</FONT></B><FONT color="#FFFFFF" size="+1"><B>（＾＾；</B></FONT></A></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<TABLE height="124" width="720">
+  <TBODY>
+    <TR>
+      <TD width="555">・バイナリ　<FONT color="#FF3333">New!!　2005/08/08</FONT><BR>
+      　<A href="pmf_bin_2005_0808.zip" target="_blank">pmf_bin_2005_0808.zip</A>(1.43MB)<BR>
+      <BR>
+      ・ソース　　<FONT color="#FF3333">New!!　2005/08/08</FONT><BR>
+      　<A href="pmf_src_2005_0808.zip" target="_blank">pmf_src_2005_0808.zip</A>(1.75MB)<BR>
+      <BR>
+      <FONT color="#FF0000"><b>※2019/04/02 長らくリンク切れで申し訳ございませんでした。リンク復活しました。</b></FONT><BR>
+      使い方は付属のテキストファイルをご参照ください。<BR>
+      PMF_Convertor Ver1.1からお試し変換機能が付きましたので、非MMC改造の方も是非体験してみてください。<BR>
+      <BR>
+      ～お知らせ～<BR>
+      PMFプレイヤーVer.1.05以上、PMF_Convertor
+      Ver.1.3以上では、シーク（早送り・巻き戻し）が可能なPMF2形式に対応しています。<BR>
+      従来のPMF1形式のPMFファイルにつきましては、再生は可能ですがシークはできませんので、誠にお手数ですがシーク機能を希望する方は再変換をお願い致しますm(_
+      _)m<BR>
+      <BR>
+      <BR>
+      ＝簡単な使い方の説明＝<BR>
+      Windows側アプリは両方とも基本的にファイルのドラッグ＆ドロップで動きます。<BR>
+      P/ECE側アプリも、ファイルを選んでAボタンで再生。SELECTボタンで戻る・終了します。<BR>
+      <BR>
+      <BR>
+      詳しい解説に関しては、また時間ができたときにおいおいやって行こうと思います。<BR>
+      とりあえずの<A href="../../nikki/nikki0174.html#PMF_DEBUT" target="_blank">感想</A><BR>
+      <BR>
+      </TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<TABLE width="100%" bgcolor="#8e94fd">
+  <TBODY>
+    <TR>
+      <TD width="640"><B><FONT color="#FFFFFF" size="+1">　見た目はこんな感じ</FONT></B></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<TABLE height="124" width="720">
+  <TBODY>
+    <TR>
+      <TD width="555">・<A href="../../nikki/nikki0028.html#PIECE_CATAPIRA" target="_blank">キャタピラカー</A>をP/ECEで動かしている動画（29秒）<BR>
+      　<IMG src="sample1.jpg" border="0" width="136" height="134"><BR>
+      　<A href="http://www.trafficsim.co.jp/~madoka/piece/pmf/sample_pmf/rimocon_Ir.pmf" target="_blank">PMFファイル</A>（1.54MB）<BR>
+      　<BR>
+      ・音に反応して動く象さん（19秒）<BR>
+      　<IMG src="sample2.jpg" border="0" width="136" height="134"><BR>
+      　<A href="http://www.trafficsim.co.jp/~madoka/piece/pmf/sample_pmf/sample_zou2.pmf" target="_blank">PMFファイル</A>（1.10MB）<BR>
+      <BR>
+      <BR>
+      ・おまけ（Routes(C)Leaf/AQUAPLUSの<A href="http://leaf.aquaplus.co.jp/product/rts.htm" target="_blank">デモ動画</A>の一部）<BR>
+      　<IMG src="sample3.jpg" border="0" width="136" height="134"><IMG src="sample4.jpg" border="0" width="136" height="134"><BR>
+      <BR>
+      これらの画像は確認用おまけプレビューツールであるPMF_Previewer.exeのスクリーンショットです。<BR>
+      <BR><BR>
+      </TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<TABLE width="100%" bgcolor="#8e94fd">
+  <TBODY>
+    <TR>
+      <TD width="640"><B><FONT color="#FFFFFF" size="+1">　ドラッグ＆ドロップで一発変換！　PMF Convertor</FONT></B></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<TABLE height="124" width="720">
+  <TBODY>
+    <TR>
+      <TD width="555"><IMG src="tool_help1.gif" width="559" height="420" border="0"><BR><BR>
+      変換ツールの使い方はいたって簡単です。<BR>
+      「出力フォルダ変更」ボタンで、PMFファイルの出力先を選択したら、あとは動画ファイルをドラッグ&amp;ドロップして、「変換開始」ボタンを押すだけ。<BR>
+      <BR>
+      すべて全自動で、P/ECEの画面に合ったサイズと色に変換してくれます（＾＾<BR>
+      ファイルをドロップしても、変換開始ボタンが押せなくなっている場合は、その動画ファイルのフォーマットに対応したDirectShowフィルタが無い可能性があります。<BR>
+      <BR>
+      DirectShowフィルタやコーデックに関しては、以下の検索結果などをご参照ください。<BR>
+      <A href="http://www.google.co.jp/search?sourceid=navclient&hl=ja&ie=UTF-8&rls=GGLC,GGLC:1970-01,GGLC:ja&q=%E3%82%B3%E3%83%BC%E3%83%87%E3%83%83%E3%82%AF%E3%81%A8%E3%81%AF" target="_blank">コーデック</A><BR>
+      <A href="http://www.google.co.jp/search?sourceid=navclient&hl=ja&ie=UTF-8&rls=GGLC,GGLC:1970-01,GGLC:ja&q=DirectShow+%E3%83%95%E3%82%A3%E3%83%AB%E3%82%BF+%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB" target="_blank">DirectShowフィルタ</A><BR>
+      <FONT color="#FF3333"><BR>
+      <BR>
+      </FONT><FONT color="#FF3333"><B><FONT size="+2"><A name="NO_MMC">●非MMC改造ユーザに朗報です！●</A><BR>
+      </FONT></B></FONT>PMF ConvertorのVer.1.1から出力オプションに、「お試し変換」機能が追加されました。<BR>
+      これは、ムービーの好きな位置から、5秒や10秒などの短い時間で切り出してPMFに変換するというもので、MMCに接続していないP/ECEでPMFを再生するのにもってこいの機能です。<BR>
+      <BR>
+      出力オプションの図<BR>
+      <IMG src="tool_help2.gif" width="304" height="104" border="0"><BR><BR>
+      お試し変換機能を使うためには、出力オプションの「↓お試し変換の時間選択」の左にあるチェックボックスにチェックを入れ、下のコンボボックスで、お好みの秒数を選択します。<BR>
+      <BR>
+      ちなみに、無印P/ECEではだいたい<B><FONT size="+2" color="#FF3333">5秒</FONT></B>が限界のようです（汗<BR><BR>
+      変換開始オフセットは、ムービーの最初から指定の秒数進んだところを変換開始位置とするための設定です。<BR>
+      これで、好きな場所から数秒間をPMFに変換することができます。<BR>
+      <BR>
+      MMC改造していないP/ECE（無印・2MB改造とも）でPMFを再生するには、<A href="#DL">ここ</A>からバイナリまたはソースをダウンロードして、その中にある「内蔵フラッシュ対応版pmf_play」をご使用ください。<BR>
+      <BR>
+      内蔵フラッシュ対応版pmf_playでもPMFの品質は変わりませんので、ご安心下さい（＾＾<BR>
+      <BR>
+      </TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<TABLE width="100%" bgcolor="#8e94fd">
+  <TBODY>
+    <TR>
+      <TD width="640"><B><FONT color="#FFFFFF" size="+1">　</FONT></B><FONT color="#FFFFFF" size="+1"><B>番外</B></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<TABLE height="124" width="720">
+  <TBODY>
+    <TR>
+      <TD width="555" valign="top"><A href="http://zurachu.net/" target="_blank">ヅラChuさん</A>の2005年夏コミ本「Re[2]:P/ECE」の連動企画として、こんなページを用意してみました。<BR>
+      <BR>
+      <FONT size="+2"><FONT size="+1"><B><A href="../th2op/th2op2pmf.htm" target="_blank">PS2版　ToHeart２のOP動画をPMFに変換しよう！</A></B></FONT></FONT><BR>
+      <BR>
+      参考：ヅラChuさんの<A href="http://zurachu.net/200503a.html#01_t2" target="_blank">記事</A><BR><BR>
+      </TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<HR>
+<P>なにか判らないことがありましたら、遠慮なく<A href="mailto:madoka@olive.plala.or.jp?Subject=「P/ECEで動画プレイヤー」について質問です">まどか</A>まで御連絡ください。</P>
+</BODY>
+</HTML>

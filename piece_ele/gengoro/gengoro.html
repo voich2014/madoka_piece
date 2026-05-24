@@ -1,0 +1,276 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<META name="GENERATOR" content="IBM HomePage Builder 2001 V5.0.0 for Windows">
+<TITLE>オリジナル電源ユニット「源５郎」～GENGORO～</TITLE>
+<script language="JavaScript" src="../../mycount.js"></script>
+</HEAD>
+<BODY>
+<P align="center"><IMG src="gengoro_logo.gif" width="620" height="333" border="0"></P>
+<HR>
+
+<TABLE width="100%" bgcolor="#8080ff">
+  <TBODY>
+    <TR>
+      <TD width="100%" align="left" height="24"><FONT size="+3" color="#FFFFFF"><B>　はじめに</B></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<TABLE>
+  <TBODY>
+    <TR>
+      <TD width="512" height="98" align="left" valign="top">　どうも、P/ECEで電子工作勉強中のまどかです。<BR>
+      <BR>
+      　このコーナーでは、P/ECEに隠された「拡張端子」を利用して、電子工作の勉強をしながら自作のハードでいろいろおもしろいことをやっちゃお～というコーナーです（＾＾；<BR>
+      <BR>
+      　そして、今回はオリジナルの電源ユニットを作ってしまおうということで、「オリジナル電源ユニット　源５郎（げんごろう）」の製作です。<BR>
+      <BR>
+      　<B><FONT color="#FF0000">なお、このページを参考にしての作業はすべて自己責任で行ってください。</FONT></B><BR>
+      <BR>
+      <BR>
+      <BR>
+      </TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<TABLE width="100%" bgcolor="#8080ff">
+  <TBODY>
+    <TR>
+      <TD width="100%" align="left" height="24"><FONT size="+3" color="#FFFFFF"><B>　作ろうと思ったきっかけ</B></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<TABLE>
+  <TBODY>
+    <TR>
+      <TD width="512" height="98" align="left" valign="top">　この源５郎を作ろうと思ったきっかけは、一言でいうと「電池ゴミの軽減」です。<BR>
+      　<BR>
+      　P/ECEを動作させるためには単３乾電池１本が必要で、パソコンとUSBで接続されていない限り､すぐに電池の電気がなくなって、新しい電池に交換しないといけません。<BR>
+      　ずっとパソコンに接続していれば電池を減らさずに遊べるのですが､実際そうはいきませんよね。<BR>
+      <BR>
+      　そんなとき、ある言葉があたまに浮かびました。<BR>
+      　<BR>
+      　「P/ECE用のACアダプタみないなのがあればなぁ……」<BR>
+      <BR>
+      　そう、同じ携帯ゲーム機であるGBでは、電池を使わなくても済むように、GB用のACアダプタが用意されています。<BR>
+      　これと同じようなモノをP/ECEでも作れば……　これがきっかけでした。<BR>
+      <BR>
+      <BR>
+      <BR>
+      </TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<TABLE width="100%" bgcolor="#8080ff">
+  <TBODY>
+    <TR>
+      <TD width="100%" align="left" height="24"><FONT size="+3" color="#FFFFFF"><B>　源５郎ができるまで</B></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<TABLE>
+  <TBODY>
+    <TR>
+      <TD width="512" height="98" align="left" valign="top">　さて、P/ECEに外部から電源を供給するためには、P/ECE側に外部電源用のコネクタが無くては話にならないのですが、みなさんもご存知のとおり、P/ECEはUSBコネクタから電源をもらうことが可能な構造になっていますよね。<BR>
+      <BR>
+      　実は、USBコネクタの端子は以下のような内訳になっていて､1番ピンと4番ピンから電源を供給しています。<BR><BR>
+      　<IMG src="USB.jpg" width="284" height="182" border="0"><BR>
+      <BR>
+      　ちなみに、1番ピンと4番ピンは電池のプラス極とマイナス極みたいなものだと思ってください。<BR>
+      <BR>
+      　というわけで、P/ECEはUSBコネクタから5Vの電源を得ていることがわかりました。<BR>
+      　と、「5Vの電源を得ていることがわかりました」っていっても、電子工作初心者の方はピンと来ないですよね。<BR>
+      　<BR>
+      　私も仕事やこの趣味の工作で色々勉強していくまでは､5Vの電源だとか､12Vの電源ラインがどうとか言われてもさっぱりで、電源なんてこの機械を動かすのに単３電池がいくついるんだっけ？　くらいの認識しかなく、5Vの電源ってどうやってつくるの？　という感じだったのですが、色々勉強していくうちに、なんとなーくわかってきました。<BR>
+      <BR>
+      　話を戻しますが、P/ECEを外部電源で動かすには5Vの電源が必要で、その5Vをつくるために電子工作では「３端子レギュレータ」という部品をよく使います。<BR>
+      <BR>
+      　この部品は、IN・GND・OUTの3本の端子を持っていて､INから入力された電圧を指定の電圧に変換して、OUTから安定した電圧供給を行うというものです。<BR>
+      　簡単に言うと､電圧変換器ですね。<BR>
+      <BR>
+      　そして、この３端子レギュレータには変換後の電圧によって色々種類があり、今回は5V変換用の「78M05」という種類の３端子レギュレータを使います。<BR>
+      　３端子レギュレータは各社から色々な型番のものが発売されていますので、お店で「78M05の３端子レギュレータください」と言えば適当なのを売ってもらえます（＾＾：<BR>
+      　<BR>
+      　また、今回はレギュレータで5Vをつくるための素として、秋葉原の秋月電子通商などで販売されている市販のACアダプタを使用しました。<BR>
+      　市販されているACアダプタにも色々種類があって、12V用とか9V用とかがあるのですが、レギュレータで任意の電圧を取り出す場合、入力電圧と出力電圧に差がありすぎると変換時に大量の熱が発生しますので､一般に入力電圧には「出力電圧＋2V」くらいのものを使うようです。<BR>
+      <BR>
+      　ですが、今回は5+2=7VのACアダプタが近くの店に売っていなかったので､その上の9Vのものを使用しました。このくらいなら特に問題はありません。<BR>
+      <BR>
+      　というわけで、以下に今回製作する「源５郎」の部品一覧を紹介します。<BR>
+      　先述した３端子レギュレータ・ACアダプタの他にいろいろ部品がありますが、これらは電源ユニットを作るときにおまじないのように必要な部品だと思っておいてください（＾＾；<BR>
+      　（私もいろいろなサイトの回路図を参考に部品を選びました）<BR>
+      <BR>
+      　
+      <TABLE bgcolor="#0080ff" width="499">
+        <COL span="1" width="1">
+        <TBODY>
+          <TR>
+            <TD align="center" bgcolor="#00FFCC" width="204">部品名</TD>
+            <TD align="center" bgcolor="#00FFCC" width="37">価格</TD>
+            <TD bgcolor="#00FFCC" align="center" width="32">個数</TD>
+            <TD align="center" bgcolor="#00FFCC" width="198">備考</TD>
+          </TR>
+          <TR>
+            <TD bgcolor="#FFFFFF" width="204">USBコネクタ(メス）</TD>
+            <TD bgcolor="#FFFFFF" align="right" width="37">150</TD>
+            <TD bgcolor="#FFFFFF" align="right" width="32">1</TD>
+            <TD bgcolor="#FFFFFF" width="198">シリーズA（平型）のもの</TD>
+          </TR>
+          <TR>
+            <TD bgcolor="#FFFFFF" width="204">ACアダプタ用ソケット</TD>
+            <TD bgcolor="#FFFFFF" align="right" width="37">90</TD>
+            <TD bgcolor="#FFFFFF" align="right" width="32">1</TD>
+            <TD bgcolor="#FFFFFF" width="198">穴のサイズを間違えないでね</TD>
+          </TR>
+          <TR>
+            <TD bgcolor="#FFFFFF" width="204">３端子レギュレータ</TD>
+            <TD bgcolor="#FFFFFF" align="right" width="37">100</TD>
+            <TD bgcolor="#FFFFFF" align="right" width="32">1</TD>
+            <TD bgcolor="#FFFFFF" width="198">78M05</TD>
+          </TR>
+          <TR>
+            <TD bgcolor="#FFFFFF" width="204">470μFの電解コンデンサ</TD>
+            <TD bgcolor="#FFFFFF" align="right" width="37">70</TD>
+            <TD bgcolor="#FFFFFF" align="right" width="32">1</TD>
+            <TD bgcolor="#FFFFFF" width="198">16Vのものでいいです</TD>
+          </TR>
+          <TR>
+            <TD bgcolor="#FFFFFF" width="204">220μFの電解コンデンサ</TD>
+            <TD bgcolor="#FFFFFF" align="right" width="37">40</TD>
+            <TD bgcolor="#FFFFFF" align="right" width="32">1</TD>
+            <TD bgcolor="#FFFFFF" width="198">16Vのものでいいです</TD>
+          </TR>
+          <TR>
+            <TD bgcolor="#FFFFFF" width="204">0.1μFのセラミックコンデンサ</TD>
+            <TD bgcolor="#FFFFFF" align="right" width="37">8</TD>
+            <TD bgcolor="#FFFFFF" align="right" width="32">2</TD>
+            <TD bgcolor="#FFFFFF" width="198">104と刻印してある小さい青いやつ</TD>
+          </TR>
+          <TR>
+            <TD bgcolor="#FFFFFF" width="204">ケース</TD>
+            <TD bgcolor="#FFFFFF" align="right" width="37">285</TD>
+            <TD bgcolor="#FFFFFF" align="right" width="32">1</TD>
+            <TD bgcolor="#FFFFFF" width="198">テイシン電機(株)のTB-9</TD>
+          </TR>
+          <TR>
+            <TD bgcolor="#FFFFFF" width="204">ACアダプタ</TD>
+            <TD bgcolor="#FFFFFF" align="right" width="37">1000</TD>
+            <TD bgcolor="#FFFFFF" align="right" width="32">1</TD>
+            <TD bgcolor="#FFFFFF" width="198">秋月製　9V1A</TD>
+          </TR>
+          <TR>
+            <TD bgcolor="#FFFF33" width="204">部品合計金額</TD>
+            <TD bgcolor="#FFFFCC" colspan="3" align="center">1751円</TD>
+          </TR>
+        </TBODY>
+      </TABLE>
+      <BR>
+      　ここで示した価格は定価ではなく、私が購入した時の価格ですので、販売店によっては値段が違ってくると思いますが、だいたい2000円で全部揃います。<BR>
+      <BR>
+      　この部品の他にお好みで、20円のアルミ板のヒートシンクをつけても良いですね。（私はつけてみました（＾＾）<BR>
+      <BR>
+      　さあ、後は回路図を参考に部品を基板に実装するだけです。<BR>
+      　あ、ケース加工は結構大変ですが､ピンバイスやヤスリを駆使して頑張って穴を空けましょう（＾＾；<BR>
+      　<BR>
+      　というわけで、回路図の公開です。<BR>
+      　（クリックすると拡大されます）<BR>
+      <BR>
+      　<A href="gengoro_kairozu.jpg" target="_blank"><IMG src="gengoro_kairozu_s.jpg" width="320" height="245" border="0"></A><BR><BR>
+      <BR>
+      　続いて、源5郎の部品一覧と完成品を写真で一気に紹介します。<BR>
+      　（クリックすると拡大表示されます）<BR>
+      　
+      <TABLE width="484" bgcolor="#0080ff">
+        <TBODY>
+          <TR>
+            <TD width="190" height="105" bgcolor="#FFFFFF"><A href="buhin_all_640480.jpg" target="_blank"><IMG src="buhin_all_640480.jpg" width="240" height="180" border="0"></A></TD>
+            <TD width="238" height="105" bgcolor="#FFFFFF"><A href="buhin_640480.jpg" target="_blank"><IMG src="buhin_640480.jpg" width="240" height="180" border="0"></A></TD>
+          </TR>
+          <TR>
+            <TD width="190" valign="top" height="50" bgcolor="#FFFFFF">部品大集合（＾＾<BR>
+            基板はケースに付属しています</TD>
+            <TD width="238" valign="top" height="50" bgcolor="#FFFFFF">ハンダ付けする部品はこれだけ<BR>
+            いちばん右のコの字型の部品がアルミ板のヒートシンクです</TD>
+          </TR>
+          <TR>
+            <TD width="190" height="162" bgcolor="#FFFFFF"><A href="all.jpg" target="_blank"><IMG src="all.jpg" width="240" height="180" border="0"></A></TD>
+            <TD width="238" height="162" bgcolor="#FFFFFF"><A href="box.jpg" target="_blank"><IMG src="box.jpg" width="240" height="180" border="0"></A></TD>
+          </TR>
+          <TR>
+            <TD width="190" valign="top" height="44" bgcolor="#FFFFFF">実際に使用する状態</TD>
+            <TD width="238" valign="top" height="44" bgcolor="#FFFFFF">源5郎のみのショット</TD>
+          </TR>
+          <TR>
+            <TD width="190" height="82" bgcolor="#FFFFFF"><A href="usb_up.jpg" target="_blank"><IMG src="usb_up.jpg" width="240" height="180" border="0"></A></TD>
+            <TD width="238" height="82" bgcolor="#FFFFFF"><A href="ac_up.jpg" target="_blank"><IMG src="ac_up.jpg" width="240" height="180" border="0"></A></TD>
+          </TR>
+          <TR>
+            <TD valign="top" height="48" bgcolor="#FFFFFF">USBコネクタ側</TD>
+            <TD valign="top" height="48" bgcolor="#FFFFFF">ACアダプタ用ソケット側</TD>
+          </TR>
+          <TR>
+            <TD height="82" bgcolor="#FFFFFF"><A href="omote.jpg" target="_blank"><IMG src="omote.jpg" width="240" height="180" border="0"></A></TD>
+            <TD valign="middle" height="82" bgcolor="#FFFFFF"><A href="ura.jpg" target="_blank"><IMG src="ura.jpg" width="240" height="180" border="0"></A></TD>
+          </TR>
+          <TR>
+            <TD valign="top" height="44" bgcolor="#FFFFFF">部品を実装してみた図<BR>
+            ヒートシンクはちょっと加工</TD>
+            <TD valign="top" height="44" bgcolor="#FFFFFF">ハンダ付け面<BR>
+            耐熱ワイヤとすずメッキ線を使いました</TD>
+          </TR>
+          <TR>
+            <TD height="120" bgcolor="#FFFFFF"><A href="adapter.jpg" target="_blank"><IMG src="adapter.jpg" width="240" height="180" border="0"></A></TD>
+            <TD height="120" bgcolor="#FFFFFF"></TD>
+          </TR>
+          <TR>
+            <TD valign="top" bgcolor="#FFFFFF" height="54">ACアダプタにはこれを使いました<BR>
+            形はみんな同じなので､表示を良く見て買ってくださいね</TD>
+            <TD bgcolor="#FFFFFF" height="54"></TD>
+          </TR>
+        </TBODY>
+      </TABLE>
+      <BR>
+      　部品実装に関して特に難しいことはありませんが、電解コンデンサのプラスとマイナス（極性といいます）を間違えたり、３端子レギュレータを逆に付けたりしないように部品の向きには注意してくださいね。<BR>
+      　ちなみに、セラミックコンデンサには極性がないので、足の向きは関係ないです（＾＾<BR>
+      <BR>
+      <BR>
+      <BR>
+      </TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+<TABLE width="100%" bgcolor="#8080ff">
+  <TBODY>
+    <TR>
+      <TD width="100%" align="left" height="24"><FONT size="+3" color="#FFFFFF"><B>　最後に</B></FONT></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<TABLE>
+  <TBODY>
+    <TR>
+      <TD width="512" height="98" align="left" valign="top">　はい、「オリジナル電源ユニット　源５郎」の製作、いかがだったでしょうか。<BR>
+      　<BR>
+      　この源５郎を使えば、P/ECEを動かすのにいちいちパソコンを立ち上げなくて済むので､電気代もお得になりますし､なんと言っても電池のゴミがでません（＾＾；<BR>
+      <BR>
+      　ちなみに、ここだけの話ですが、この源５郎を使わなくても、ACアダプタが付属しているタイプのUSBハブを使えば、パソコン無しでP/ECEをUSB接続で駆動することができます＜知人に指摘されるまで気付きませんでした（笑<BR><BR>
+      　ですが、源５郎を作った方が、費用的に安くできますし､電子工作での電源周りの勉強にもってこいの題材なので､是非挑戦してみてください。<BR>
+      <BR>
+      　源５郎のおまけ的な使い方として、USBに接続するタイプの「USB扇風機」などもこの源５郎を使えばパソコン無しで動かすことができます。結構実用的でしょ（＾＾<BR>
+      <BR>
+      　また、P/ECEを真の携帯端末として利用するために、ACアダプタの代わりにラジコンなどの7.2Vバッテリをつないでも良いですね。<BR>
+      　これは、ラジコンバッテリのコネクタをACアダプタのコネクタ変換する短いケーブルを作ればすぐできるので、これでP/ECEの長時間駆動も夢じゃない！？<BR>
+      <BR>
+      　というわけで、今回はここまで。<BR>
+      　それでは、P/ECEを通じて未来のエンジニアが育つことを願いつつ､お別れです。<BR>
+      　<BR>
+      　でわでわ～</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+
+</BODY>
+</HTML>
