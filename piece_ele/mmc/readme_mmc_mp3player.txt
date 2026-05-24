@@ -17,7 +17,7 @@ P/ECEでMP3プレイヤー(試作版)
                   情報提供してくださったnsawaさん(http://piece.no-ip.org/)
 　　　　　　　　　ありがとうございますm(-_-)m
 2004/12/11 まどか 動作確認済みメモリカード一覧を削除
-                  サポートページ(http://www2.plala.or.jp/madoka/Piece_ele/mmc/mmc.htm)
+                  サポートページ(https://voich2014.github.io/madoka_piece/piece_ele/mmc/mmc.htm)
 　　　　　　　　　をご覧下さい。
 2005/05/01 まどか ついに、nsawaさんの5倍速改造MMCライブラリに対応しました。
                   そして、ヅラChuさんの操作感UPなmain.cも利用させていただき、
@@ -48,7 +48,7 @@ P/ECEでMP3プレイヤー(試作版)
 み、それをP/ECEから読み込んで再生するというものです。
 
 動作確認済みメモリカードはサポートページをご覧下さい。
-http://www2.plala.or.jp/madoka/Piece_ele/mmc/mmc.htm
+https://voich2014.github.io/madoka_piece/piece_ele/mmc/mmc.htm
 
 このプログラムを利用するためには、P/ECEの拡張端子が外に出ていることと、MMCを
 P/ECEに接続する基板を製作することが必要です。接続基板については付属の回路図を参

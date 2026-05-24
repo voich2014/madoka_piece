@@ -426,7 +426,7 @@ ENABLE;		//割り込み許可
 　そちらのソースを参考にしていただくと一番わかりやすいと思います。
 
 　　ソースは以下のＵＲＬからＤＬして下さい。
-	http://www2.plala.or.jp/madoka/Piece_ele/adtest/adtest_20030831.zip
+	https://voich2014.github.io/madoka_piece/piece_ele/adtest/adtest_20030831.zip
     (ちなみに、このテキストファイルも含まれています(^^;)
 
 

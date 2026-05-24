@@ -251,5 +251,5 @@ ENABLE;		//割り込み許可
 　マーを利用したA/D変換の簡易オシロスコープのサンプルを参考にして下さい。
 
 　　ソースは以下のＵＲＬからＤＬして下さい。
-	http://www2.plala.or.jp/madoka/Piece_ele/adtest/osirotest_20030907.zip
+	https://voich2014.github.io/madoka_piece/piece_ele/adtest/osirotest_20030907.zip
     (ちなみに、このテキストファイルも含まれています(^^;)

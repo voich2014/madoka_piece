@@ -164,7 +164,7 @@ Ver.1.30     mmcFileReadSctとmmcFileReadMMCSctでファイルサイズを超えてのアクセス
 フォーマットしてから使用するようにして下さい。
 
 現在動作確認済みカードの一覧はサポートページをご覧下さい。
-http://www2.plala.or.jp/madoka/Piece_ele/mmc/mmc.htm
+https://voich2014.github.io/madoka_piece/piece_ele/mmc/mmc.htm
 
 
 ソースを改変してアップデートさせる場合は、sysdev\pcekn_mmcフォルダ上のコマンド
